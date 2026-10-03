@@ -211,6 +211,7 @@
             color: #5a6c7d;
             font-size: 14px;
             font-weight: 500;
+            transition: color 0.3s;
         }
         .form-group input,
         .form-group textarea {
@@ -448,7 +449,7 @@
                         <input type="text" name="name" placeholder="Как к вам обращаться?" required>
                     </div>
                     <div class="form-group">
-                        <label>Телефон</label>
+                        <label id="phone-label">Введите ваш номер телефона</label>
                         <input type="tel" name="phone" id="phone" placeholder="+7 (___) ___-__-__" required maxlength="18">
                     </div>
                     <div class="form-group">
@@ -504,27 +505,77 @@
     </footer>
 
     <script>
-        // МАСКА ТЕЛЕФОНА
+        // ========== СМЕНА ПОДПИСИ ПРИ ВЫБОРЕ СВЯЗИ ==========
+        const phoneLabel = document.getElementById('phone-label');
         const phoneInput = document.getElementById('phone');
+        const contactRadios = document.querySelectorAll('input[name="contact"]');
 
+        const labels = {
+            'Номер': 'Введите ваш номер телефона',
+            'Telegram': 'Введите ваш @username в Telegram или номер',
+            'MAX': 'Введите ваш номер в MAX'
+        };
+
+        const placeholders = {
+            'Номер': '+7 (___) ___-__-__',
+            'Telegram': '@ваш_username или +7 (___) ___-__-__',
+            'MAX': '+7 (___) ___-__-__'
+        };
+
+        contactRadios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const value = e.target.value;
+                phoneLabel.textContent = labels[value];
+                phoneInput.placeholder = placeholders[value];
+                phoneInput.value = '';
+
+                if (value === 'Telegram') {
+                    phoneInput.removeAttribute('maxlength');
+                } else {
+                    phoneInput.setAttribute('maxlength', '18');
+                }
+            });
+        });
+
+        // ========== МАСКА ТЕЛЕФОНА ==========
         phoneInput.addEventListener('focus', () => {
-            if (!phoneInput.value) {
+            const contactType = document.querySelector('input[name="contact"]:checked').value;
+            if (contactType !== 'Telegram' && !phoneInput.value) {
                 phoneInput.value = '+7 ';
             }
         });
 
         phoneInput.addEventListener('input', (e) => {
-            let value = e.target.value.replace(/\D/g, '');
+            const contactType = document.querySelector('input[name="contact"]:checked').value;
 
-            if (value.startsWith('8')) {
-                value = '7' + value.slice(1);
+            // Для Telegram — разрешаем @username
+            if (contactType === 'Telegram') {
+                let value = e.target.value;
+                if (value.includes('@')) {
+                    return;
+                }
+                if (/^[\d\s\-()+]*$/.test(value)) {
+                    let digits = value.replace(/\D/g, '');
+                    if (digits.startsWith('8')) digits = '7' + digits.slice(1);
+                    if (digits.startsWith('7')) digits = digits.slice(1);
+                    if (digits.length > 10) digits = digits.slice(0, 10);
+
+                    let formatted = '+7';
+                    if (digits.length > 0) formatted += ' (' + digits.slice(0, 3);
+                    if (digits.length >= 3) formatted += ') ' + digits.slice(3, 6);
+                    if (digits.length >= 6) formatted += '-' + digits.slice(6, 8);
+                    if (digits.length >= 8) formatted += '-' + digits.slice(8, 10);
+
+                    e.target.value = formatted;
+                }
+                return;
             }
-            if (value.startsWith('7')) {
-                value = value.slice(1);
-            }
-            if (value.length > 10) {
-                value = value.slice(0, 10);
-            }
+
+            // Для Номер / MAX — обычная маска
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.startsWith('8')) value = '7' + value.slice(1);
+            if (value.startsWith('7')) value = value.slice(1);
+            if (value.length > 10) value = value.slice(0, 10);
 
             let formatted = '+7';
             if (value.length > 0) formatted += ' (' + value.slice(0, 3);
@@ -547,7 +598,7 @@
             }
         });
 
-        // УВЕДОМЛЕНИЯ
+        // ========== УВЕДОМЛЕНИЯ ==========
         function showToast(message, type) {
             const backdrop = document.createElement('div');
             backdrop.className = 'toast-backdrop';
@@ -573,7 +624,7 @@
             }, 4000);
         }
 
-        // ОТПРАВКА ФОРМЫ
+        // ========== ОТПРАВКА ФОРМЫ ==========
         document.getElementById('zayavka').addEventListener('submit', async (e) => {
             e.preventDefault();
 
@@ -597,6 +648,10 @@
                 e.target.reset();
                 btn.disabled = false;
                 btn.textContent = 'Отправить заявку';
+
+                // Сброс подписи и placeholder
+                phoneLabel.textContent = labels['Номер'];
+                phoneInput.placeholder = placeholders['Номер'];
             } catch (error) {
                 showToast('Ошибка отправки.<br>Попробуйте позже или напишите мне напрямую.', 'error');
                 btn.disabled = false;
