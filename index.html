@@ -19,7 +19,6 @@
         }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-        /* НАВИГАЦИЯ */
         .navbar {
             position: fixed;
             top: 0; left: 0; right: 0;
@@ -65,7 +64,6 @@
         }
         .navbar .btn-nav:hover { background: #5a9db1; color: white; }
 
-        /* HERO */
         .hero {
             background: 
                 linear-gradient(135deg, rgba(44, 62, 80, 0.55), rgba(90, 60, 120, 0.45)),
@@ -115,7 +113,6 @@
         .btn:hover { background: #5a9db1; transform: translateY(-3px); box-shadow: 0 8px 30px rgba(126, 184, 201, 0.6); }
         .btn:disabled { background: #a8c5d0; cursor: not-allowed; transform: none; }
 
-        /* SECTIONS */
         section { padding: 110px 0; }
         section h2 {
             font-family: 'Cormorant Garamond', serif;
@@ -127,7 +124,6 @@
             letter-spacing: 1px;
         }
 
-        /* ABOUT */
         .about { background: white; }
         .about-grid {
             display: grid;
@@ -152,7 +148,6 @@
         }
         .about-text p:last-child { margin-bottom: 0; }
 
-        /* SERVICES */
         .services { background: #f8f9fa; }
         .services-grid {
             display: grid;
@@ -185,7 +180,6 @@
             font-family: 'Cormorant Garamond', serif;
         }
 
-        /* FORM */
         .form-section { 
             background: 
                 linear-gradient(135deg, rgba(240, 232, 248, 0.85), rgba(232, 244, 248, 0.85)),
@@ -233,7 +227,6 @@
         .form-group textarea { resize: vertical; min-height: 120px; }
         .form-container .btn { width: 100%; margin-top: 10px; }
 
-        /* ВЫБОР СПОСОБА СВЯЗИ */
         .contact-options {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -275,13 +268,11 @@
             transform: translateY(-2px);
         }
 
-        /* CONTACTS */
         .contacts { background: white; text-align: center; }
         .contacts p { font-size: 19px; margin-bottom: 20px; color: #5a6c7d; font-weight: 300; }
         .contacts a { color: #7eb8c9; text-decoration: none; font-weight: 500; transition: color 0.3s; }
         .contacts a:hover { color: #5a9db1; }
 
-        /* FOOTER */
         footer {
             background: #2c3e50;
             color: #b8c5d1;
@@ -291,7 +282,6 @@
             font-weight: 300;
         }
 
-        /* УВЕДОМЛЕНИЯ (TOAST) */
         .toast {
             position: fixed;
             top: 50%;
@@ -345,7 +335,6 @@
         }
         .toast-backdrop.show { opacity: 1; }
 
-        /* MOBILE */
         @media (max-width: 768px) {
             .navbar ul { display: none; }
             .navbar .container { justify-content: center; }
@@ -383,7 +372,7 @@
 
     <nav class="navbar">
         <div class="container">
-            <div class="logo">Золотова Елизавета</div>
+            <div class="logo">Имя Фамилия</div>
             <ul>
                 <li><a href="#about">Обо мне</a></li>
                 <li><a href="#services">Услуги</a></li>
@@ -395,7 +384,7 @@
 
     <section class="hero">
         <div class="container">
-            <h1>Психолог </h1>
+            <h1>Психолог Имя Фамилия</h1>
             <p>Помогаю справиться с тревогой, стрессом и сложными жизненными ситуациями. Работаю бережно и с уважением к вашему темпу.</p>
             <a href="#form" class="btn">Записаться на консультацию</a>
         </div>
@@ -406,7 +395,7 @@
             <h2>Обо мне</h2>
             <div class="about-grid">
                 <div class="about-photo">
-                    <img src="https://images.unsplash.com/photo-1579208575657-c595a05383b7?q=80&w=1000&auto=format&fit=crop" alt="Золотова Елизавета">
+                    <img src="https://images.unsplash.com/photo-1579208575657-c595a05383b7?q=80&w=1000&auto=format&fit=crop" alt="Психолог">
                 </div>
                 <div class="about-text">
                     <p>Я — практикующий психолог с опытом работы более 3 лет. Специализируюсь на работе с тревожными состояниями, отношениями и самооценкой. В своей работе использую методы когнитивно-поведенческой терапии и бережный подход к каждому клиенту.</p>
@@ -492,20 +481,19 @@
         <div class="container">
             <h2>Контакты</h2>
             <p>📞 <a href="tel:+79991234567">+7 (999) 123-45-67</a></p>
-            <p>✉️ <a href="mailto:psy@example.com">psy@example.com</a></p>
+            <p>✉️ <a href="mailto:email@example.com">email@example.com</a></p>
             <p>💬 Telegram: <a href="https://t.me/username">@username</a></p>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>© 2026 Психолог Золотова Елизавета. Все права защищены.</p>
+            <p>© 2026 Психолог. Все права защищены.</p>
             <p style="margin-top: 10px; font-size: 12px; opacity: 0.6;">Иконка: <a href="https://www.flaticon.com/free-icons/psychology" target="_blank" style="color: #7eb8c9;">Psychology icons created by Magnific - Flaticon</a></p>
         </div>
     </footer>
 
     <script>
-        // ========== СМЕНА ПОДПИСИ ПРИ ВЫБОРЕ СВЯЗИ ==========
         const phoneLabel = document.getElementById('phone-label');
         const phoneInput = document.getElementById('phone');
         const contactRadios = document.querySelectorAll('input[name="contact"]');
@@ -537,7 +525,6 @@
             });
         });
 
-        // ========== МАСКА ТЕЛЕФОНА ==========
         phoneInput.addEventListener('focus', () => {
             const contactType = document.querySelector('input[name="contact"]:checked').value;
             if (contactType !== 'Telegram' && !phoneInput.value) {
@@ -548,7 +535,6 @@
         phoneInput.addEventListener('input', (e) => {
             const contactType = document.querySelector('input[name="contact"]:checked').value;
 
-            // Для Telegram — разрешаем @username
             if (contactType === 'Telegram') {
                 let value = e.target.value;
                 if (value.includes('@')) {
@@ -571,7 +557,6 @@
                 return;
             }
 
-            // Для Номер / MAX — обычная маска
             let value = e.target.value.replace(/\D/g, '');
             if (value.startsWith('8')) value = '7' + value.slice(1);
             if (value.startsWith('7')) value = value.slice(1);
@@ -598,7 +583,6 @@
             }
         });
 
-        // ========== УВЕДОМЛЕНИЯ ==========
         function showToast(message, type) {
             const backdrop = document.createElement('div');
             backdrop.className = 'toast-backdrop';
@@ -624,7 +608,6 @@
             }, 4000);
         }
 
-        // ========== ОТПРАВКА ФОРМЫ ==========
         document.getElementById('zayavka').addEventListener('submit', async (e) => {
             e.preventDefault();
 
@@ -649,7 +632,6 @@
                 btn.disabled = false;
                 btn.textContent = 'Отправить заявку';
 
-                // Сброс подписи и placeholder
                 phoneLabel.textContent = labels['Номер'];
                 phoneInput.placeholder = placeholders['Номер'];
             } catch (error) {
