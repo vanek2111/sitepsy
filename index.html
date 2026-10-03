@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Психолог Золотова Елизавета</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
             color: #2c3e50;
             line-height: 1.6;
             background: #f8f9fa;
@@ -31,28 +34,33 @@
             align-items: center;
         }
         .navbar .logo {
-            font-size: 20px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
             font-weight: 600;
             color: #2c3e50;
+            letter-spacing: 0.5px;
         }
         .navbar ul {
             display: flex;
             gap: 35px;
             list-style: none;
+            align-items: center;
         }
         .navbar a {
             text-decoration: none;
             color: #5a6c7d;
-            font-size: 16px;
+            font-size: 15px;
+            font-weight: 500;
             transition: color 0.3s;
         }
         .navbar a:hover { color: #7eb8c9; }
         .navbar .btn-nav {
             background: #7eb8c9;
             color: white;
-            padding: 10px 24px;
+            padding: 11px 26px;
             border-radius: 50px;
-            font-size: 15px;
+            font-size: 14px;
+            font-weight: 600;
         }
         .navbar .btn-nav:hover { background: #5a9db1; color: white; }
 
@@ -70,53 +78,77 @@
             padding: 120px 20px 60px;
         }
         .hero h1 {
-            font-size: 56px;
-            margin-bottom: 20px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 72px;
+            font-weight: 600;
+            margin-bottom: 25px;
             color: #ffffff;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            text-shadow: 0 2px 30px rgba(0,0,0,0.4);
+            letter-spacing: 1px;
+            line-height: 1.1;
         }
         .hero p {
             font-size: 20px;
+            font-weight: 300;
             color: #f0f4f8;
-            max-width: 600px;
-            margin: 0 auto 35px;
-            text-shadow: 0 1px 10px rgba(0,0,0,0.3);
+            max-width: 620px;
+            margin: 0 auto 40px;
+            text-shadow: 0 1px 15px rgba(0,0,0,0.4);
+            line-height: 1.7;
         }
         .btn {
             display: inline-block;
             background: #7eb8c9;
             color: white;
-            padding: 18px 44px;
+            padding: 18px 46px;
             border-radius: 50px;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 17px;
+            font-weight: 600;
             border: none;
             cursor: pointer;
             transition: all 0.3s;
             box-shadow: 0 4px 20px rgba(126, 184, 201, 0.4);
+            letter-spacing: 0.3px;
         }
-        .btn:hover { background: #5a9db1; transform: translateY(-3px); box-shadow: 0 8px 30px rgba(126, 184, 201, 0.5); }
+        .btn:hover { background: #5a9db1; transform: translateY(-3px); box-shadow: 0 8px 30px rgba(126, 184, 201, 0.6); }
 
         /* SECTIONS */
-        section { padding: 100px 0; }
+        section { padding: 110px 0; }
         section h2 {
-            font-size: 42px;
-            margin-bottom: 50px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 52px;
+            margin-bottom: 55px;
             text-align: center;
             color: #2c3e50;
-            font-weight: 700;
+            font-weight: 600;
+            letter-spacing: 1px;
         }
 
         /* ABOUT */
         .about { background: white; }
-        .about-content {
-            max-width: 750px;
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 70px;
+            align-items: center;
+            max-width: 1050px;
             margin: 0 auto;
-            font-size: 19px;
-            color: #5a6c7d;
-            text-align: center;
-            line-height: 1.8;
         }
+        .about-photo img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+            display: block;
+        }
+        .about-text p {
+            font-size: 18px;
+            color: #5a6c7d;
+            line-height: 1.9;
+            margin-bottom: 22px;
+            font-weight: 300;
+        }
+        .about-text p:last-child { margin-bottom: 0; }
 
         /* SERVICES */
         .services { background: #f8f9fa; }
@@ -127,32 +159,53 @@
         }
         .service-card {
             background: white;
-            padding: 45px 35px;
+            padding: 50px 38px;
             border-radius: 24px;
             box-shadow: 0 4px 30px rgba(0,0,0,0.06);
             transition: all 0.4s;
             border: 1px solid #eef2f5;
         }
-        .service-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
-        .service-card h3 { font-size: 22px; margin-bottom: 15px; color: #2c3e50; }
-        .service-card p { color: #5a6c7d; }
-        .service-card .price { font-size: 28px; font-weight: 700; color: #7eb8c9; margin-top: 25px; }
+        .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+        .service-card h3 { 
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px; 
+            font-weight: 600;
+            margin-bottom: 18px; 
+            color: #2c3e50;
+            line-height: 1.3;
+        }
+        .service-card p { color: #5a6c7d; font-size: 16px; font-weight: 300; line-height: 1.7; }
+        .service-card .price { 
+            font-size: 32px; 
+            font-weight: 600; 
+            color: #7eb8c9; 
+            margin-top: 28px;
+            font-family: 'Cormorant Garamond', serif;
+        }
 
         /* FORM */
-        .form-section { background: linear-gradient(135deg, #f0e8f8 0%, #e8f4f8 100%); }
-        .form-container {
-            max-width: 520px;
-            margin: 0 auto;
-            background: white;
-            padding: 55px 45px;
-            border-radius: 24px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        .form-section { 
+            background: 
+                linear-gradient(135deg, rgba(240, 232, 248, 0.85), rgba(232, 244, 248, 0.85)),
+                url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
         }
-        .form-container h2 { margin-bottom: 35px; font-size: 32px; }
-        .form-group { margin-bottom: 22px; }
+        .form-container {
+            max-width: 540px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 60px 50px;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+        }
+        .form-container h2 { 
+            margin-bottom: 35px; 
+            font-size: 38px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .form-group { margin-bottom: 24px; }
         .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             color: #5a6c7d;
             font-size: 14px;
             font-weight: 500;
@@ -160,12 +213,13 @@
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 15px 20px;
+            padding: 16px 22px;
             border: 2px solid #e8eef2;
             border-radius: 14px;
             font-size: 16px;
             font-family: inherit;
             transition: all 0.3s;
+            background: white;
         }
         .form-group input:focus,
         .form-group textarea:focus {
@@ -173,33 +227,36 @@
             border-color: #7eb8c9;
             box-shadow: 0 0 0 4px rgba(126, 184, 201, 0.1);
         }
-        .form-group textarea { resize: vertical; min-height: 110px; }
+        .form-group textarea { resize: vertical; min-height: 120px; }
         .form-container .btn { width: 100%; margin-top: 10px; }
 
         /* CONTACTS */
         .contacts { background: white; text-align: center; }
-        .contacts p { font-size: 18px; margin-bottom: 18px; color: #5a6c7d; }
-        .contacts a { color: #7eb8c9; text-decoration: none; font-weight: 500; }
+        .contacts p { font-size: 19px; margin-bottom: 20px; color: #5a6c7d; font-weight: 300; }
+        .contacts a { color: #7eb8c9; text-decoration: none; font-weight: 500; transition: color 0.3s; }
         .contacts a:hover { color: #5a9db1; }
 
         /* FOOTER */
         footer {
             background: #2c3e50;
             color: #b8c5d1;
-            padding: 35px 0;
+            padding: 40px 0;
             text-align: center;
             font-size: 14px;
+            font-weight: 300;
         }
 
         /* MOBILE */
         @media (max-width: 768px) {
             .navbar ul { display: none; }
             .navbar .container { justify-content: center; }
-            .hero h1 { font-size: 34px; }
+            .hero h1 { font-size: 42px; }
             .hero p { font-size: 17px; }
-            section h2 { font-size: 30px; }
+            section h2 { font-size: 36px; }
             section { padding: 70px 0; }
+            .about-grid { grid-template-columns: 1fr; gap: 35px; }
             .form-container { padding: 40px 25px; }
+            .form-container h2 { font-size: 30px; }
         }
     </style>
 </head>
@@ -228,8 +285,14 @@
     <section class="about" id="about">
         <div class="container">
             <h2>Обо мне</h2>
-            <div class="about-content">
-                <p>Я — практикующий психолог с опытом работы более 3 лет. Специализируюсь на работе с тревожными состояниями, отношениями и самооценкой. В своей работе использую методы когнитивно-поведенческой терапии и бережный подход к каждому клиенту.</p>
+            <div class="about-grid">
+                <div class="about-photo">
+                    <img src="https://images.unsplash.com/photo-1579208575657-c595a05383b7?q=80&w=1000&auto=format&fit=crop" alt="Золотова Елизавета">
+                </div>
+                <div class="about-text">
+                    <p>Я — практикующий психолог с опытом работы более 3 лет. Специализируюсь на работе с тревожными состояниями, отношениями и самооценкой. В своей работе использую методы когнитивно-поведенческой терапии и бережный подход к каждому клиенту.</p>
+                    <p>Моя задача — помочь вам найти внутреннюю опору и справиться с трудностями в безопасной и поддерживающей атмосфере.</p>
+                </div>
             </div>
         </div>
     </section>
