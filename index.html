@@ -253,7 +253,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) scale(0.8);
-            padding: 35px 55px;
+            padding: 40px 60px;
             border-radius: 24px;
             color: white;
             font-size: 19px;
@@ -279,14 +279,16 @@
         }
         .toast-icon {
             display: block;
-            font-size: 60px;
-            margin-bottom: 18px;
-            animation: pop 0.5s ease 0.2s both;
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: heartBeat 1.5s ease infinite;
         }
-        @keyframes pop {
-            0% { transform: scale(0); }
-            70% { transform: scale(1.2); }
-            100% { transform: scale(1); }
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.15); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.15); }
+            70% { transform: scale(1); }
         }
         .toast-backdrop {
             position: fixed;
@@ -312,12 +314,12 @@
             .form-container h2 { font-size: 30px; }
             .toast {
                 max-width: 90%;
-                padding: 28px 35px;
+                padding: 30px 35px;
                 font-size: 16px;
             }
             .toast-icon {
-                font-size: 50px;
-                margin-bottom: 14px;
+                font-size: 65px;
+                margin-bottom: 15px;
             }
         }
     </style>
