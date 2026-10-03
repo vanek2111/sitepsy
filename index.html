@@ -247,39 +247,57 @@
             font-weight: 300;
         }
 
-        /* TOAST УВЕДОМЛЕНИЯ */
-        @keyframes slideIn {
-            from { transform: translateX(400px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes slideOut {
-            from { transform: translateX(0); opacity: 1; }
-            to { transform: translateX(400px); opacity: 0; }
-        }
+        /* УВЕДОМЛЕНИЯ (TOAST) */
         .toast {
             position: fixed;
-            top: 30px;
-            right: 30px;
-            padding: 22px 32px;
-            border-radius: 16px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            padding: 35px 55px;
+            border-radius: 24px;
             color: white;
-            font-size: 16px;
+            font-size: 19px;
             font-weight: 500;
             z-index: 9999;
-            max-width: 420px;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.25);
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.3);
             font-family: 'Manrope', sans-serif;
-            line-height: 1.5;
+            line-height: 1.6;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
         }
         .toast-success {
             background: linear-gradient(135deg, #7eb8c9, #5a9db1);
-            animation: slideIn 0.4s ease;
         }
         .toast-error {
             background: linear-gradient(135deg, #e88a8a, #d16b6b);
-            animation: slideIn 0.4s ease;
         }
-        .toast.hiding { animation: slideOut 0.4s ease; }
+        .toast-icon {
+            display: block;
+            font-size: 60px;
+            margin-bottom: 18px;
+            animation: pop 0.5s ease 0.2s both;
+        }
+        @keyframes pop {
+            0% { transform: scale(0); }
+            70% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .toast-backdrop {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(4px);
+            z-index: 9998;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .toast-backdrop.show { opacity: 1; }
 
         /* MOBILE */
         @media (max-width: 768px) {
@@ -293,12 +311,13 @@
             .form-container { padding: 40px 25px; }
             .form-container h2 { font-size: 30px; }
             .toast {
-                top: 20px;
-                right: 20px;
-                left: 20px;
-                max-width: none;
-                padding: 18px 24px;
-                font-size: 15px;
+                max-width: 90%;
+                padding: 28px 35px;
+                font-size: 16px;
+            }
+            .toast-icon {
+                font-size: 50px;
+                margin-bottom: 14px;
             }
         }
     </style>
@@ -403,15 +422,28 @@
 
     <script>
         function showToast(message, type) {
+            const backdrop = document.createElement('div');
+            backdrop.className = 'toast-backdrop';
+            document.body.appendChild(backdrop);
+            setTimeout(() => backdrop.classList.add('show'), 10);
+
             const toast = document.createElement('div');
             toast.className = 'toast toast-' + type;
-            toast.textContent = message;
+
+            const icon = type === 'success' ? '✅' : '❌';
+            toast.innerHTML = `<span class="toast-icon">${icon}</span>${message}`;
             document.body.appendChild(toast);
 
+            setTimeout(() => toast.classList.add('show'), 10);
+
             setTimeout(() => {
-                toast.classList.add('hiding');
-                setTimeout(() => toast.remove(), 400);
-            }, 5000);
+                toast.classList.remove('show');
+                backdrop.classList.remove('show');
+                setTimeout(() => {
+                    toast.remove();
+                    backdrop.remove();
+                }, 400);
+            }, 3500);
         }
 
         document.getElementById('zayavka').addEventListener('submit', async (e) => {
@@ -433,12 +465,12 @@
                     body: JSON.stringify(data)
                 });
 
-                showToast('Спасибо, ' + data.name + '! 💚 Ваша заявка отправлена. Я свяжусь с вами в ближайшее время.', 'success');
+                showToast('Спасибо, ' + data.name + '!<br>Ваша заявка отправлена.<br>Я свяжусь с вами в ближайшее время.', 'success');
                 e.target.reset();
                 btn.disabled = false;
                 btn.textContent = 'Отправить заявку';
             } catch (error) {
-                showToast('Ошибка отправки. Попробуйте позже или напишите мне напрямую.', 'error');
+                showToast('Ошибка отправки.<br>Попробуйте позже или напишите мне напрямую.', 'error');
                 btn.disabled = false;
                 btn.textContent = 'Отправить заявку';
             }
