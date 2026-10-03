@@ -6,6 +6,7 @@
     <title>Психолог Золотова Елизавета</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             color: #2c3e50;
@@ -14,62 +15,107 @@
         }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
+        /* НАВИГАЦИЯ */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 18px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar .logo {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        .navbar ul {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: #5a6c7d;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        .navbar a:hover { color: #7eb8c9; }
+        .navbar .btn-nav {
+            background: #7eb8c9;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 15px;
+        }
+        .navbar .btn-nav:hover { background: #5a9db1; color: white; }
+
         /* HERO */
-    .hero {
-    background: 
-        linear-gradient(135deg, rgba(232, 244, 248, 0.5), rgba(240, 232, 248, 0.5)),
-        url('https://images.unsplash.com/photo-1638443436690-db587cc66f12?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    padding: 40px 20px;
-}
+        .hero {
+            background: 
+                linear-gradient(135deg, rgba(44, 62, 80, 0.55), rgba(90, 60, 120, 0.45)),
+                url('https://images.unsplash.com/photo-1638443436690-db587cc66f12?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 120px 20px 60px;
         }
         .hero h1 {
-            font-size: 48px;
+            font-size: 56px;
             margin-bottom: 20px;
-            color: #2c3e50;
+            color: #ffffff;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
         }
         .hero p {
             font-size: 20px;
-            color: #5a6c7d;
+            color: #f0f4f8;
             max-width: 600px;
-            margin: 0 auto 30px;
+            margin: 0 auto 35px;
+            text-shadow: 0 1px 10px rgba(0,0,0,0.3);
         }
         .btn {
             display: inline-block;
             background: #7eb8c9;
             color: white;
-            padding: 16px 40px;
+            padding: 18px 44px;
             border-radius: 50px;
             text-decoration: none;
             font-size: 18px;
             border: none;
             cursor: pointer;
             transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(126, 184, 201, 0.4);
         }
-        .btn:hover { background: #5a9db1; transform: translateY(-2px); }
+        .btn:hover { background: #5a9db1; transform: translateY(-3px); box-shadow: 0 8px 30px rgba(126, 184, 201, 0.5); }
 
         /* SECTIONS */
-        section { padding: 80px 0; }
+        section { padding: 100px 0; }
         section h2 {
-            font-size: 36px;
-            margin-bottom: 40px;
+            font-size: 42px;
+            margin-bottom: 50px;
             text-align: center;
             color: #2c3e50;
+            font-weight: 700;
         }
 
         /* ABOUT */
         .about { background: white; }
         .about-content {
-            max-width: 700px;
+            max-width: 750px;
             margin: 0 auto;
-            font-size: 18px;
+            font-size: 19px;
             color: #5a6c7d;
             text-align: center;
+            line-height: 1.8;
         }
 
         /* SERVICES */
@@ -81,40 +127,42 @@
         }
         .service-card {
             background: white;
-            padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            transition: all 0.3s;
+            padding: 45px 35px;
+            border-radius: 24px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+            transition: all 0.4s;
+            border: 1px solid #eef2f5;
         }
-        .service-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
+        .service-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
         .service-card h3 { font-size: 22px; margin-bottom: 15px; color: #2c3e50; }
         .service-card p { color: #5a6c7d; }
-        .service-card .price { font-size: 24px; font-weight: bold; color: #7eb8c9; margin-top: 20px; }
+        .service-card .price { font-size: 28px; font-weight: 700; color: #7eb8c9; margin-top: 25px; }
 
         /* FORM */
         .form-section { background: linear-gradient(135deg, #f0e8f8 0%, #e8f4f8 100%); }
         .form-container {
-            max-width: 500px;
+            max-width: 520px;
             margin: 0 auto;
             background: white;
-            padding: 50px 40px;
-            border-radius: 20px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            padding: 55px 45px;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
         }
-        .form-container h2 { margin-bottom: 30px; }
-        .form-group { margin-bottom: 20px; }
+        .form-container h2 { margin-bottom: 35px; font-size: 32px; }
+        .form-group { margin-bottom: 22px; }
         .form-group label {
             display: block;
             margin-bottom: 8px;
             color: #5a6c7d;
             font-size: 14px;
+            font-weight: 500;
         }
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 14px 18px;
+            padding: 15px 20px;
             border: 2px solid #e8eef2;
-            border-radius: 12px;
+            border-radius: 14px;
             font-size: 16px;
             font-family: inherit;
             transition: all 0.3s;
@@ -123,36 +171,52 @@
         .form-group textarea:focus {
             outline: none;
             border-color: #7eb8c9;
+            box-shadow: 0 0 0 4px rgba(126, 184, 201, 0.1);
         }
-        .form-group textarea { resize: vertical; min-height: 100px; }
-        .form-container .btn { width: 100%; }
+        .form-group textarea { resize: vertical; min-height: 110px; }
+        .form-container .btn { width: 100%; margin-top: 10px; }
 
         /* CONTACTS */
         .contacts { background: white; text-align: center; }
-        .contacts p { font-size: 18px; margin-bottom: 15px; color: #5a6c7d; }
-        .contacts a { color: #7eb8c9; text-decoration: none; }
+        .contacts p { font-size: 18px; margin-bottom: 18px; color: #5a6c7d; }
+        .contacts a { color: #7eb8c9; text-decoration: none; font-weight: 500; }
+        .contacts a:hover { color: #5a9db1; }
 
         /* FOOTER */
         footer {
             background: #2c3e50;
             color: #b8c5d1;
-            padding: 30px 0;
+            padding: 35px 0;
             text-align: center;
             font-size: 14px;
         }
 
         /* MOBILE */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 32px; }
-            .hero p { font-size: 18px; }
-            section h2 { font-size: 28px; }
-            section { padding: 60px 0; }
+            .navbar ul { display: none; }
+            .navbar .container { justify-content: center; }
+            .hero h1 { font-size: 34px; }
+            .hero p { font-size: 17px; }
+            section h2 { font-size: 30px; }
+            section { padding: 70px 0; }
+            .form-container { padding: 40px 25px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- HERO -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">Золотова Елизавета</div>
+            <ul>
+                <li><a href="#about">Обо мне</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+                <li><a href="#form" class="btn-nav">Записаться</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <section class="hero">
         <div class="container">
             <h1>Психолог Золотова Елизавета</h1>
@@ -161,8 +225,7 @@
         </div>
     </section>
 
-    <!-- ABOUT -->
-    <section class="about">
+    <section class="about" id="about">
         <div class="container">
             <h2>Обо мне</h2>
             <div class="about-content">
@@ -171,8 +234,7 @@
         </div>
     </section>
 
-    <!-- SERVICES -->
-    <section class="services">
+    <section class="services" id="services">
         <div class="container">
             <h2>Услуги</h2>
             <div class="services-grid">
@@ -195,7 +257,6 @@
         </div>
     </section>
 
-    <!-- FORM -->
     <section class="form-section" id="form">
         <div class="container">
             <div class="form-container">
@@ -219,8 +280,7 @@
         </div>
     </section>
 
-    <!-- CONTACTS -->
-    <section class="contacts">
+    <section class="contacts" id="contacts">
         <div class="container">
             <h2>Контакты</h2>
             <p>📞 <a href="tel:+79991234567">+7 (999) 123-45-67</a></p>
@@ -229,22 +289,17 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
         <div class="container">
             <p>© 2026 Психолог Золотова Елизавета. Все права защищены.</p>
         </div>
     </footer>
 
-    <!-- JAVASCRIPT (форма) -->
     <script>
         document.getElementById('zayavka').addEventListener('submit', async (e) => {
             e.preventDefault();
-
             const formData = new FormData(e.target);
             const data = Object.fromEntries(formData);
-
-            // ЗДЕСЬ БУДЕТ WEBHOOK URL (заменим позже)
             const WEBHOOK_URL = 'ЗДЕСЬ_БУДЕТ_URL_ИЗ_N8N';
 
             try {
@@ -253,11 +308,10 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
                 });
-
-                alert('Спасибо, ' + data.name + '! Ваша заявка отправлена. Я свяжусь с вами в ближайшее время.');
+                alert('Спасибо, ' + data.name + '! Ваша заявка отправлена.');
                 e.target.reset();
             } catch (error) {
-                alert('Ошибка отправки. Попробуйте позже или напишите мне напрямую.');
+                alert('Ошибка отправки. Попробуйте позже.');
             }
         });
     </script>
