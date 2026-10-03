@@ -363,7 +363,7 @@
             e.preventDefault();
             const formData = new FormData(e.target);
             const data = Object.fromEntries(formData);
-            const WEBHOOK_URL = 'ЗДЕСЬ_БУДЕТ_URL_ИЗ_N8N';
+            const WEBHOOK_URL = 'https://n8n.vsellm.info/webhook/zayavka';
 
             try {
                 await fetch(WEBHOOK_URL, {
