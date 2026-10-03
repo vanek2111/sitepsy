@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Психолог Иван Иванов</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #2c3e50;
+            line-height: 1.6;
+            background: #f8f9fa;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, #e8f4f8 0%, #f0e8f8 100%);
+            padding: 100px 0 80px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        .hero p {
+            font-size: 20px;
+            color: #5a6c7d;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        .btn {
+            display: inline-block;
+            background: #7eb8c9;
+            color: white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn:hover { background: #5a9db1; transform: translateY(-2px); }
+
+        /* SECTIONS */
+        section { padding: 80px 0; }
+        section h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        /* ABOUT */
+        .about { background: white; }
+        .about-content {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 18px;
+            color: #5a6c7d;
+            text-align: center;
+        }
+
+        /* SERVICES */
+        .services { background: #f8f9fa; }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
+        .service-card h3 { font-size: 22px; margin-bottom: 15px; color: #2c3e50; }
+        .service-card p { color: #5a6c7d; }
+        .service-card .price { font-size: 24px; font-weight: bold; color: #7eb8c9; margin-top: 20px; }
+
+        /* FORM */
+        .form-section { background: linear-gradient(135deg, #f0e8f8 0%, #e8f4f8 100%); }
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+        .form-container h2 { margin-bottom: 30px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #5a6c7d;
+            font-size: 14px;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e8eef2;
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #7eb8c9;
+        }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        .form-container .btn { width: 100%; }
+
+        /* CONTACTS */
+        .contacts { background: white; text-align: center; }
+        .contacts p { font-size: 18px; margin-bottom: 15px; color: #5a6c7d; }
+        .contacts a { color: #7eb8c9; text-decoration: none; }
+
+        /* FOOTER */
+        footer {
+            background: #2c3e50;
+            color: #b8c5d1;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .hero p { font-size: 18px; }
+            section h2 { font-size: 28px; }
+            section { padding: 60px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <h1>Психолог Иван Иванов</h1>
+            <p>Помогаю справиться с тревогой, стрессом и сложными жизненными ситуациями. Работаю бережно и с уважением к вашему темпу.</p>
+            <a href="#form" class="btn">Записаться на консультацию</a>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about">
+        <div class="container">
+            <h2>Обо мне</h2>
+            <div class="about-content">
+                <p>Я — практикующий психолог с опытом работы более 5 лет. Специализируюсь на работе с тревожными состояниями, отношениями и самооценкой. В своей работе использую методы когнитивно-поведенческой терапии и бережный подход к каждому клиенту.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services">
+        <div class="container">
+            <h2>Услуги</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Индивидуальная консультация</h3>
+                    <p>Работа с тревогой, стрессом, самооценкой, отношениями. 50 минут.</p>
+                    <div class="price">3 000 ₽</div>
+                </div>
+                <div class="service-card">
+                    <h3>Парная консультация</h3>
+                    <p>Помощь парам в сложных ситуациях. Работа с коммуникацией и конфликтами. 80 минут.</p>
+                    <div class="price">5 000 ₽</div>
+                </div>
+                <div class="service-card">
+                    <h3>Онлайн-консультация</h3>
+                    <p>Работа из любой точки мира через Zoom или Telegram. 50 минут.</p>
+                    <div class="price">2 500 ₽</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORM -->
+    <section class="form-section" id="form">
+        <div class="container">
+            <div class="form-container">
+                <h2>Записаться на консультацию</h2>
+                <form id="zayavka">
+                    <div class="form-group">
+                        <label>Ваше имя</label>
+                        <input type="text" name="name" placeholder="Как к вам обращаться?" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Телефон</label>
+                        <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Что вас беспокоит?</label>
+                        <textarea name="request" placeholder="Опишите коротко ваш запрос"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Отправить заявку</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTS -->
+    <section class="contacts">
+        <div class="container">
+            <h2>Контакты</h2>
+            <p>📞 <a href="tel:+79991234567">+7 (999) 123-45-67</a></p>
+            <p>✉️ <a href="mailto:psy@example.com">psy@example.com</a></p>
+            <p>💬 Telegram: <a href="https://t.me/username">@username</a></p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Психолог Иван Иванов. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT (форма) -->
+    <script>
+        document.getElementById('zayavka').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+
+            // ЗДЕСЬ БУДЕТ WEBHOOK URL (заменим позже)
+            const WEBHOOK_URL = 'ЗДЕСЬ_БУДЕТ_URL_ИЗ_N8N';
+
+            try {
+                await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                alert('Спасибо, ' + data.name + '! Ваша заявка отправлена. Я свяжусь с вами в ближайшее время.');
+                e.target.reset();
+            } catch (error) {
+                alert('Ошибка отправки. Попробуйте позже или напишите мне напрямую.');
+            }
+        });
+    </script>
+
+</body>
+</html>
