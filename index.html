@@ -119,6 +119,37 @@
             margin-left: 1px;
         }
 
+        /* БУРГЕР */
+        .burger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+        .burger span {
+            width: 26px;
+            height: 2px;
+            background: #3a4a4f;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        .burger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .burger.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+        .burger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
         .navbar ul {
             display: flex;
             gap: 30px;
@@ -158,6 +189,22 @@
         }
         .navbar .btn-nav::after { display: none; }
         .navbar .btn-nav:hover { background: #73926f; color: white; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(139, 168, 136, 0.4); }
+
+        /* OVERLAY */
+        .menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(58, 74, 79, 0.4);
+            backdrop-filter: blur(4px);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .menu-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
 
         /* HERO */
         .hero {
@@ -255,10 +302,7 @@
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
         /* СЧЁТЧИКИ */
-        .counters {
-            background: #f0ebe2;
-            padding: 80px 0;
-        }
+        .counters { background: #f0ebe2; padding: 80px 0; }
         .counters-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -276,11 +320,7 @@
             line-height: 1;
             margin-bottom: 12px;
         }
-        .counter-label {
-            font-size: 16px;
-            color: #5d6b70;
-            font-weight: 400;
-        }
+        .counter-label { font-size: 16px; color: #5d6b70; font-weight: 400; }
 
         /* ABOUT */
         .about { background: #faf7f2; }
@@ -342,11 +382,7 @@
             background: linear-gradient(90deg, #a8c3b4, #8ba888);
             z-index: 0;
         }
-        .timeline-step {
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
+        .timeline-step { text-align: center; position: relative; z-index: 1; }
         .timeline-icon {
             width: 80px;
             height: 80px;
@@ -372,11 +408,7 @@
             margin-bottom: 10px;
             font-weight: 600;
         }
-        .timeline-step p {
-            font-size: 14px;
-            color: #5d6b70;
-            line-height: 1.6;
-        }
+        .timeline-step p { font-size: 14px; color: #5d6b70; line-height: 1.6; }
 
         /* С ЧЕМ РАБОТАЮ */
         .topics { background: #faf7f2; }
@@ -410,12 +442,7 @@
 
         /* ЦИТАТА */
         .quote { background: #f0ebe2; padding: 100px 0; }
-        .quote-block {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-        }
+        .quote-block { max-width: 800px; margin: 0 auto; text-align: center; position: relative; }
         .quote-mark {
             font-family: 'Playfair Display', serif;
             font-size: 120px;
@@ -567,11 +594,7 @@
             margin-bottom: 28px;
             line-height: 1.6;
         }
-        .package-card .btn {
-            width: 100%;
-            padding: 14px 30px;
-            font-size: 15px;
-        }
+        .package-card .btn { width: 100%; padding: 14px 30px; font-size: 15px; }
 
         /* FAQ */
         .faq { background: #faf7f2; }
@@ -634,11 +657,7 @@
 
         /* ОТЗЫВЫ */
         .reviews { background: #ffffff; }
-        .reviews-slider {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-        }
+        .reviews-slider { max-width: 800px; margin: 0 auto; position: relative; }
         .review-card {
             background: #faf7f2;
             padding: 50px 45px;
@@ -748,11 +767,7 @@
         .form-container .btn { width: 100%; margin-top: 10px; }
 
         /* ВЫБОР СПОСОБА СВЯЗИ */
-        .contact-options {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 12px;
-        }
+        .contact-options { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
         .contact-option input[type="radio"] { display: none; }
         .contact-label {
             display: flex;
@@ -796,11 +811,7 @@
         }
 
         /* ЧЕКБОКС */
-        .checkbox-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+        .checkbox-group { display: flex; flex-direction: column; gap: 10px; }
         .checkbox-label {
             display: flex;
             align-items: flex-start;
@@ -824,11 +835,7 @@
             transition: transform 0.2s ease;
         }
         .checkbox-label input[type="checkbox"]:hover { transform: scale(1.1); }
-        .checkbox-label a {
-            color: #8ba888;
-            text-decoration: underline;
-            transition: color 0.3s;
-        }
+        .checkbox-label a { color: #8ba888; text-decoration: underline; transition: color 0.3s; }
         .checkbox-label a:hover { color: #73926f; }
 
         /* CONTACTS */
@@ -864,11 +871,7 @@
             font-size: 14px;
             font-weight: 400;
         }
-        footer a {
-            color: #a8c3b4;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+        footer a { color: #a8c3b4; text-decoration: none; transition: color 0.3s; }
         footer a:hover { color: #ffffff; }
 
         /* КНОПКА НАВЕРХ */
@@ -894,16 +897,8 @@
             transition: all 0.4s ease;
             box-shadow: 0 8px 25px rgba(139, 168, 136, 0.4);
         }
-        .back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        .back-to-top:hover {
-            background: #73926f;
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(139, 168, 136, 0.5);
-        }
+        .back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+        .back-to-top:hover { background: #73926f; transform: translateY(-3px); box-shadow: 0 12px 35px rgba(139, 168, 136, 0.5); }
 
         /* УВЕДОМЛЕНИЯ */
         .toast {
@@ -925,31 +920,67 @@
             transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
             box-shadow: 0 15px 40px rgba(58, 74, 79, 0.25);
         }
-        .toast.show {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
-        }
-        .toast-success {
-            background: linear-gradient(135deg, #a8c3b4 0%, #8ba888 100%);
-        }
-        .toast-error {
-            background: linear-gradient(135deg, #e8b4b4 0%, #d99a9a 100%);
-        }
-        .toast-icon {
-            display: block;
-            font-size: 36px;
-            margin-bottom: 10px;
-            line-height: 1;
-        }
-        .toast-message {
-            position: relative;
-            z-index: 1;
+        .toast.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        .toast-success { background: linear-gradient(135deg, #a8c3b4 0%, #8ba888 100%); }
+        .toast-error { background: linear-gradient(135deg, #e8b4b4 0%, #d99a9a 100%); }
+        .toast-icon { display: block; font-size: 36px; margin-bottom: 10px; line-height: 1; }
+        .toast-message { position: relative; z-index: 1; }
+
+        /* ПЛАНШЕТЫ */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .navbar ul { gap: 20px; }
+            .navbar ul a { font-size: 14px; }
+            .navbar .btn-nav { padding: 10px 20px; font-size: 13px; }
+            .hero h1 { font-size: 56px; }
+            .hero p { font-size: 18px; }
+            section h2 { font-size: 44px; }
+            section { padding: 90px 0; }
+            .counter-number { font-size: 56px; }
+            .timeline { gap: 15px; }
+            .timeline-icon { width: 70px; height: 70px; font-size: 28px; }
+            .timeline-step h3 { font-size: 18px; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .packages-grid { grid-template-columns: repeat(2, 1fr); }
+            .package-card.featured { transform: scale(1); }
+            .quote-text { font-size: 28px; }
+            .form-container { padding: 50px 40px; }
         }
 
-        /* MOBILE */
+        /* МОБИЛЬНЫЕ */
         @media (max-width: 768px) {
-            .navbar ul { display: none; }
-            .navbar .container { justify-content: center; }
+            .burger { display: flex; }
+            .navbar .container { justify-content: space-between; }
+            .navbar ul {
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: 80%;
+                max-width: 340px;
+                background: #faf7f2;
+                flex-direction: column;
+                padding: 100px 40px 40px;
+                gap: 0;
+                box-shadow: -10px 0 40px rgba(58, 74, 79, 0.15);
+                transform: translateX(100%);
+                transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+                display: flex;
+                align-items: flex-start;
+                overflow-y: auto;
+            }
+            .navbar ul.open { transform: translateX(0); }
+            .navbar ul li { width: 100%; border-bottom: 1px solid rgba(168, 195, 180, 0.2); }
+            .navbar ul li:last-child { border-bottom: none; margin-top: 20px; }
+            .navbar ul a { display: block; padding: 18px 0; font-size: 17px; color: #3a4a4f; }
+            .navbar ul a::after { display: none; }
+            .navbar ul .btn-nav {
+                display: block;
+                text-align: center;
+                padding: 16px 20px;
+                width: 100%;
+                border-radius: 50px;
+            }
+
             .hero h1 { font-size: 42px; }
             .hero p { font-size: 17px; }
             .hero { background-attachment: scroll; }
@@ -960,15 +991,8 @@
             .about-photo::before { display: none; }
             .form-container { padding: 40px 25px; }
             .form-container h2 { font-size: 28px; }
-            .toast {
-                max-width: 90%;
-                padding: 20px 24px;
-                font-size: 14px;
-            }
-            .toast-icon {
-                font-size: 32px;
-                margin-bottom: 8px;
-            }
+            .toast { max-width: 90%; padding: 20px 24px; font-size: 14px; }
+            .toast-icon { font-size: 32px; margin-bottom: 8px; }
             .contact-options { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
             .contact-label { padding: 12px 6px; font-size: 12px; }
             .contact-icon { font-size: 20px; }
@@ -990,10 +1014,8 @@
 </head>
 <body>
 
-    <!-- ПРОГРЕСС-БАР -->
     <div class="progress-bar" id="progressBar"></div>
 
-    <!-- НАВИГАЦИЯ -->
     <nav class="navbar" id="navbar">
         <div class="container">
             <a href="#" class="logo">
@@ -1007,7 +1029,14 @@
                     <span class="logo-sub">Психолог Елизавета</span>
                 </div>
             </a>
-            <ul>
+
+            <button class="burger" id="burger" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul id="navMenu">
                 <li><a href="#about">Обо мне</a></li>
                 <li><a href="#how">Как я работаю</a></li>
                 <li><a href="#services">Услуги</a></li>
@@ -1018,7 +1047,8 @@
         </div>
     </nav>
 
-    <!-- HERO -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
     <section class="hero">
         <div class="container">
             <h1>Психолог Золотова Елизавета</h1>
@@ -1027,7 +1057,6 @@
         </div>
     </section>
 
-    <!-- СЧЁТЧИКИ -->
     <section class="counters reveal">
         <div class="container">
             <div class="counters-grid">
@@ -1047,7 +1076,6 @@
         </div>
     </section>
 
-    <!-- ОБО МНЕ -->
     <section class="about reveal" id="about">
         <div class="container">
             <h2>Обо мне</h2>
@@ -1063,7 +1091,6 @@
         </div>
     </section>
 
-    <!-- КАК Я РАБОТАЮ -->
     <section class="how reveal" id="how">
         <div class="container">
             <h2>Как я работаю</h2>
@@ -1092,7 +1119,6 @@
         </div>
     </section>
 
-    <!-- С ЧЕМ РАБОТАЮ -->
     <section class="topics reveal">
         <div class="container">
             <h2>С чем я работаю</h2>
@@ -1113,7 +1139,6 @@
         </div>
     </section>
 
-    <!-- ЦИТАТА -->
     <section class="quote reveal">
         <div class="container">
             <div class="quote-block">
@@ -1124,7 +1149,6 @@
         </div>
     </section>
 
-    <!-- УСЛУГИ -->
     <section class="services reveal" id="services">
         <div class="container">
             <h2>Услуги</h2>
@@ -1163,7 +1187,6 @@
         </div>
     </section>
 
-    <!-- ПАКЕТЫ -->
     <section class="packages reveal">
         <div class="container">
             <h2>Пакеты услуг</h2>
@@ -1193,7 +1216,6 @@
         </div>
     </section>
 
-    <!-- FAQ -->
     <section class="faq reveal">
         <div class="container">
             <h2>Частые вопросы</h2>
@@ -1247,7 +1269,6 @@
         </div>
     </section>
 
-    <!-- ОТЗЫВЫ -->
     <section class="reviews reveal" id="reviews">
         <div class="container">
             <h2>Отзывы</h2>
@@ -1268,7 +1289,6 @@
         </div>
     </section>
 
-    <!-- ФОРМА -->
     <section class="form-section reveal" id="form">
         <div class="container">
             <div class="form-container">
@@ -1324,7 +1344,6 @@
         </div>
     </section>
 
-    <!-- КОНТАКТЫ -->
     <section class="contacts reveal" id="contacts">
         <div class="container">
             <h2>Контакты</h2>
@@ -1334,7 +1353,6 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
         <div class="container">
             <p>© 2026 Тихое место · Психолог Золотова Елизавета. Все права защищены.</p>
@@ -1347,10 +1365,33 @@
         </div>
     </footer>
 
-    <!-- КНОПКА НАВЕРХ -->
     <button class="back-to-top" id="backToTop" aria-label="Наверх">↑</button>
 
     <script>
+        // БУРГЕР-МЕНЮ
+        const burger = document.getElementById('burger');
+        const navMenu = document.getElementById('navMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function toggleMenu() {
+            burger.classList.toggle('active');
+            navMenu.classList.toggle('open');
+            menuOverlay.classList.toggle('show');
+            document.body.style.overflow = navMenu.classList.contains('open') ? 'hidden' : '';
+        }
+
+        burger.addEventListener('click', toggleMenu);
+        menuOverlay.addEventListener('click', toggleMenu);
+
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                burger.classList.remove('active');
+                navMenu.classList.remove('open');
+                menuOverlay.classList.remove('show');
+                document.body.style.overflow = '';
+            });
+        });
+
         // ПРОГРЕСС-БАР
         const progressBar = document.getElementById('progressBar');
         window.addEventListener('scroll', () => {
