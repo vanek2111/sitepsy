@@ -133,7 +133,7 @@
             border: none;
             cursor: pointer;
             padding: 8px;
-            z-index: 1002;
+            z-index: 1003;
             position: relative;
             transition: all 0.3s ease;
         }
@@ -207,30 +207,6 @@
             transition: all 0.3s ease;
         }
         .menu-overlay.show { opacity: 1; visibility: visible; }
-
-        .mobile-cta {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(135deg, #a8c3b4, #8ba888);
-            color: white;
-            padding: 18px 20px;
-            border: none;
-            font-size: 16px;
-            font-weight: 600;
-            z-index: 998;
-            box-shadow: 0 -4px 25px rgba(58, 74, 79, 0.15);
-            cursor: pointer;
-            letter-spacing: 0.3px;
-            transition: all 0.3s ease;
-            font-family: 'Inter', sans-serif;
-        }
-        .mobile-cta:active {
-            transform: scale(0.98);
-            background: #73926f;
-        }
 
         .hero {
             background: 
@@ -682,7 +658,6 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            pointer-events: none;
         }
         .review-stars {
             color: #f0b775;
@@ -953,8 +928,6 @@
         }
 
         @media (max-width: 768px) {
-            body { padding-bottom: 70px; }
-
             .burger { display: flex; }
             .navbar .container { justify-content: space-between; }
             
@@ -976,8 +949,11 @@
                 align-items: flex-start;
                 overflow-y: auto;
                 z-index: 1001;
+                pointer-events: auto;
             }
-            .navbar ul.open { transform: translateX(0); }
+            .navbar ul.open { 
+                transform: translateX(0);
+            }
             
             .navbar ul li {
                 width: 100%;
@@ -1006,8 +982,6 @@
             .logo.hidden { opacity: 0; pointer-events: none; }
             .mobile-phone { display: flex; margin-right: 8px; }
             .navbar .container { gap: 8px; }
-            
-            .mobile-cta { display: block; }
 
             .hero h1 { font-size: 42px; }
             .hero p { font-size: 17px; }
@@ -1043,7 +1017,7 @@
             .faq-question { padding: 18px 20px; font-size: 15px; }
             .faq-answer { padding: 0 20px; font-size: 14px; }
             .faq-item.active .faq-answer { padding: 0 20px 18px; }
-            .back-to-top { bottom: 85px; right: 15px; width: 44px; height: 44px; font-size: 18px; }
+            .back-to-top { bottom: 20px; right: 20px; width: 44px; height: 44px; font-size: 18px; }
         }
     </style>
 </head>
@@ -1089,10 +1063,6 @@
     </nav>
 
     <div class="menu-overlay" id="menuOverlay"></div>
-
-    <button class="mobile-cta" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'})">
-        Записаться на консультацию
-    </button>
 
     <section class="hero">
         <div class="container">
@@ -1429,7 +1399,8 @@
         const menuOverlay = document.getElementById('menuOverlay');
         const logo = document.getElementById('logo');
 
-        function toggleMenu() {
+        burger.addEventListener('click', function(e) {
+            e.stopPropagation();
             const isOpen = navMenu.classList.contains('open');
             
             if (isOpen) {
@@ -1445,10 +1416,15 @@
                 logo.classList.add('hidden');
                 document.body.style.overflow = 'hidden';
             }
-        }
+        });
 
-        burger.addEventListener('click', toggleMenu);
-        menuOverlay.addEventListener('click', toggleMenu);
+        menuOverlay.addEventListener('click', function() {
+            burger.classList.remove('active');
+            navMenu.classList.remove('open');
+            menuOverlay.classList.remove('show');
+            logo.classList.remove('hidden');
+            document.body.style.overflow = '';
+        });
 
         navMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
@@ -1561,7 +1537,6 @@
             });
         }
 
-        // Клик по точкам
         reviewDots.forEach(dot => {
             dot.addEventListener('click', () => {
                 goToReview(+dot.dataset.index);
@@ -1569,16 +1544,17 @@
             });
         });
 
-        // Свайп
         reviewsSlider.addEventListener('mousedown', (e) => {
             isDragging = true;
             startX = e.pageX;
+            currentX = e.pageX;
             reviewsTrack.style.transition = 'none';
         });
 
         reviewsSlider.addEventListener('touchstart', (e) => {
             isDragging = true;
             startX = e.touches[0].clientX;
+            currentX = e.touches[0].clientX;
             reviewsTrack.style.transition = 'none';
         }, { passive: true });
 
@@ -1619,7 +1595,6 @@
         document.addEventListener('mouseup', onEnd);
         reviewsSlider.addEventListener('touchend', onEnd);
 
-        // Автоплей
         let autoPlayTimer = setInterval(() => {
             goToReview(currentReview + 1);
         }, 6000);
