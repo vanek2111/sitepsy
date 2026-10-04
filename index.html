@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Психолог Золотова Елизавета</title>
+    <title>Тихое место — Психолог Золотова Елизавета</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,12 +39,12 @@
             background: rgba(250, 247, 242, 0.85);
             backdrop-filter: blur(16px);
             z-index: 1000;
-            padding: 20px 0;
+            padding: 14px 0;
             border-bottom: 1px solid rgba(168, 195, 180, 0.15);
             transition: all 0.4s ease;
         }
         .navbar.scrolled {
-            padding: 14px 0;
+            padding: 10px 0;
             box-shadow: 0 4px 30px rgba(58, 74, 79, 0.06);
         }
         .navbar .container {
@@ -52,20 +52,80 @@
             justify-content: space-between;
             align-items: center;
         }
-        .navbar .logo {
+
+        /* ЛОГОТИП */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+        }
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #a8c3b4 0%, #8ba888 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            flex-shrink: 0;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 6px 18px rgba(139, 168, 136, 0.3);
+            position: relative;
+        }
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 17px;
+            border: 1px solid rgba(139, 168, 136, 0.3);
+            transition: all 0.4s ease;
+        }
+        .logo-icon svg {
+            width: 26px;
+            height: 26px;
+        }
+        .logo:hover .logo-icon {
+            transform: rotate(-8deg) scale(1.05);
+            box-shadow: 0 10px 25px rgba(139, 168, 136, 0.5);
+        }
+        .logo:hover .logo-icon::before {
+            inset: -6px;
+            border-color: rgba(139, 168, 136, 0.5);
+        }
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+        .logo-name {
             font-family: 'Playfair Display', serif;
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 600;
             color: #3a4a4f;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease;
         }
+        .logo:hover .logo-name { color: #8ba888; }
+        .logo-sub {
+            font-family: 'Inter', sans-serif;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: #8ba888;
+            font-weight: 600;
+            margin-top: 4px;
+            margin-left: 1px;
+        }
+
         .navbar ul {
             display: flex;
             gap: 30px;
             list-style: none;
             align-items: center;
         }
-        .navbar a {
+        .navbar ul a {
             text-decoration: none;
             color: #5d6b70;
             font-size: 15px;
@@ -73,7 +133,7 @@
             transition: color 0.3s;
             position: relative;
         }
-        .navbar a::after {
+        .navbar ul a::after {
             content: '';
             position: absolute;
             bottom: -4px;
@@ -84,8 +144,8 @@
             transition: width 0.3s ease;
             border-radius: 2px;
         }
-        .navbar a:hover { color: #8ba888; }
-        .navbar a:hover::after { width: 100%; }
+        .navbar ul a:hover { color: #8ba888; }
+        .navbar ul a:hover::after { width: 100%; }
         .navbar .btn-nav {
             background: #8ba888;
             color: white;
@@ -94,6 +154,7 @@
             font-size: 14px;
             font-weight: 600;
             transition: all 0.3s;
+            text-decoration: none;
         }
         .navbar .btn-nav::after { display: none; }
         .navbar .btn-nav:hover { background: #73926f; color: white; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(139, 168, 136, 0.4); }
@@ -206,9 +267,7 @@
             margin: 0 auto;
             text-align: center;
         }
-        .counter-item {
-            padding: 20px;
-        }
+        .counter-item { padding: 20px; }
         .counter-number {
             font-family: 'Playfair Display', serif;
             font-size: 64px;
@@ -251,8 +310,7 @@
             display: block;
             position: relative;
             z-index: 1;
-            transition: transform 0.4s ease, filter 0.8s ease;
-            filter: blur(0);
+            transition: transform 0.4s ease;
         }
         .about-photo:hover img { transform: scale(1.02); }
         .about-text p {
@@ -265,9 +323,7 @@
         .about-text p:last-child { margin-bottom: 0; }
 
         /* КАК Я РАБОТАЮ */
-        .how {
-            background: #ffffff;
-        }
+        .how { background: #ffffff; }
         .timeline {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -323,9 +379,7 @@
         }
 
         /* С ЧЕМ РАБОТАЮ */
-        .topics {
-            background: #faf7f2;
-        }
+        .topics { background: #faf7f2; }
         .topics-cloud {
             display: flex;
             flex-wrap: wrap;
@@ -355,10 +409,7 @@
         }
 
         /* ЦИТАТА */
-        .quote {
-            background: #f0ebe2;
-            padding: 100px 0;
-        }
+        .quote { background: #f0ebe2; padding: 100px 0; }
         .quote-block {
             max-width: 800px;
             margin: 0 auto;
@@ -431,10 +482,7 @@
             justify-content: center;
             color: #8ba888;
         }
-        .service-icon svg {
-            width: 32px;
-            height: 32px;
-        }
+        .service-icon svg { width: 32px; height: 32px; }
         .service-card h3 { 
             font-family: 'Playfair Display', serif;
             font-size: 24px; 
@@ -453,9 +501,7 @@
         }
 
         /* ПАКЕТЫ */
-        .packages {
-            background: #f0ebe2;
-        }
+        .packages { background: #f0ebe2; }
         .packages-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -528,13 +574,8 @@
         }
 
         /* FAQ */
-        .faq {
-            background: #faf7f2;
-        }
-        .faq-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+        .faq { background: #faf7f2; }
+        .faq-list { max-width: 800px; margin: 0 auto; }
         .faq-item {
             background: #ffffff;
             border-radius: 16px;
@@ -592,9 +633,7 @@
         }
 
         /* ОТЗЫВЫ */
-        .reviews {
-            background: #ffffff;
-        }
+        .reviews { background: #ffffff; }
         .reviews-slider {
             max-width: 800px;
             margin: 0 auto;
@@ -957,7 +996,17 @@
     <!-- НАВИГАЦИЯ -->
     <nav class="navbar" id="navbar">
         <div class="container">
-            <div class="logo">Золотова Елизавета</div>
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m0 0c-3.5 0-6-2.5-6-6s2.5-6 6-6 6 2.5 6 6-2.5 6-6 6z"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-name">Тихое место</span>
+                    <span class="logo-sub">Психолог Елизавета</span>
+                </div>
+            </a>
             <ul>
                 <li><a href="#about">Обо мне</a></li>
                 <li><a href="#how">Как я работаю</a></li>
@@ -1288,7 +1337,7 @@
     <!-- FOOTER -->
     <footer>
         <div class="container">
-            <p>© 2026 Психолог Золотова Елизавета. Все права защищены.</p>
+            <p>© 2026 Тихое место · Психолог Золотова Елизавета. Все права защищены.</p>
             <p style="margin-top: 12px; font-size: 13px;">
                 <a href="consent.html" target="_blank">Согласие на обработку ПДн</a> · 
                 <a href="privacy.html" target="_blank">Политика конфиденциальности</a> · 
@@ -1423,7 +1472,6 @@
             });
         });
 
-        // АВТО-СМЕНА ОТЗЫВОВ
         setInterval(() => {
             currentReview = (currentReview + 1) % reviews.length;
             showReview(currentReview);
