@@ -82,11 +82,6 @@
         .logo-icon svg { width: 26px; height: 26px; }
         .logo:hover .logo-icon {
             transform: rotate(-8deg) scale(1.05);
-            box-shadow: 0 10px 25px rgba(139, 168, 136, 0.5);
-        }
-        .logo:hover .logo-icon::before {
-            inset: -6px;
-            border-color: rgba(139, 168, 136, 0.5);
         }
         .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
         .logo-name {
@@ -95,9 +90,7 @@
             font-weight: 600;
             color: #3a4a4f;
             letter-spacing: 0.3px;
-            transition: color 0.3s ease;
         }
-        .logo:hover .logo-name { color: #8ba888; }
         .logo-sub {
             font-family: 'Inter', sans-serif;
             font-size: 9px;
@@ -122,7 +115,6 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(139, 168, 136, 0.3);
         }
-        .mobile-phone:hover { background: #73926f; transform: scale(1.05); }
         .mobile-phone svg { width: 20px; height: 20px; }
 
         .burger {
@@ -135,7 +127,6 @@
             padding: 8px;
             z-index: 1003;
             position: relative;
-            transition: all 0.3s ease;
         }
         .burger span {
             width: 26px;
@@ -144,16 +135,6 @@
             border-radius: 2px;
             transition: all 0.3s ease;
             display: block;
-        }
-        .burger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        .burger.active span:nth-child(2) {
-            opacity: 0;
-            transform: translateX(-10px);
-        }
-        .burger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
         }
 
         .navbar ul {
@@ -194,14 +175,88 @@
             text-decoration: none;
         }
         .navbar .btn-nav::after { display: none; }
-        .navbar .btn-nav:hover { background: #73926f; color: white; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(139, 168, 136, 0.4); }
+        .navbar .btn-nav:hover { background: #73926f; color: white; transform: translateY(-2px); }
+
+        /* ВЫЕЗЖАЮЩЕЕ МЕНЮ (mobile) */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 85%;
+            max-width: 360px;
+            background: #faf7f2;
+            z-index: 1001;
+            flex-direction: column;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: -10px 0 40px rgba(58, 74, 79, 0.2);
+            overflow-y: auto;
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 24px;
+            border-bottom: 1px solid rgba(168, 195, 180, 0.2);
+        }
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: #3a4a4f;
+            cursor: pointer;
+            padding: 4px 8px;
+            line-height: 1;
+            transition: all 0.3s ease;
+        }
+        .mobile-menu-close:hover { color: #8ba888; transform: rotate(90deg); }
+        .mobile-menu-nav {
+            display: flex;
+            flex-direction: column;
+            padding: 20px 0;
+            flex: 1;
+        }
+        .mobile-menu-nav a {
+            text-decoration: none;
+            color: #3a4a4f;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 20px 32px;
+            border-bottom: 1px solid rgba(168, 195, 180, 0.15);
+            transition: all 0.3s ease;
+            display: block;
+        }
+        .mobile-menu-nav a:last-child {
+            border-bottom: none;
+        }
+        .mobile-menu-nav a:hover,
+        .mobile-menu-nav a:active {
+            background: rgba(168, 195, 180, 0.15);
+            color: #8ba888;
+            padding-left: 40px;
+        }
+        .mobile-menu-footer {
+            padding: 20px 32px 32px;
+        }
+        .mobile-menu-footer .btn {
+            width: 100%;
+            text-align: center;
+            display: block;
+            padding: 18px 30px;
+            font-size: 16px;
+        }
 
         .menu-overlay {
             position: fixed;
             inset: 0;
             background: rgba(58, 74, 79, 0.5);
             backdrop-filter: blur(4px);
-            z-index: 999;
+            z-index: 1000;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
@@ -263,6 +318,7 @@
             letter-spacing: 0.5px;
             position: relative;
             overflow: hidden;
+            font-family: 'Inter', sans-serif;
         }
         .btn::before {
             content: '';
@@ -341,7 +397,6 @@
             z-index: 1;
             transition: transform 0.4s ease;
         }
-        .about-photo:hover img { transform: scale(1.02); }
         .about-text p {
             font-size: 17px;
             color: #5d6b70;
@@ -384,11 +439,6 @@
             font-size: 32px;
             transition: all 0.4s ease;
         }
-        .timeline-step:hover .timeline-icon {
-            background: #a8c3b4;
-            transform: scale(1.1);
-            box-shadow: 0 10px 30px rgba(168, 195, 180, 0.4);
-        }
         .timeline-step h3 {
             font-family: 'Playfair Display', serif;
             font-size: 20px;
@@ -423,12 +473,11 @@
             background: #a8c3b4;
             color: #ffffff;
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(168, 195, 180, 0.3);
             border-color: #a8c3b4;
         }
 
         .quote { background: #f0ebe2; padding: 100px 0; }
-        .quote-block { max-width: 800px; margin: 0 auto; text-align: center; position: relative; }
+        .quote-block { max-width: 800px; margin: 0 auto; text-align: center; }
         .quote-mark {
             font-family: 'Playfair Display', serif;
             font-size: 120px;
@@ -464,7 +513,6 @@
             background: #faf7f2;
             padding: 50px 38px;
             border-radius: 20px;
-            box-shadow: 0 4px 30px rgba(58, 74, 79, 0.06);
             transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             border: 1px solid rgba(168, 195, 180, 0.2);
             position: relative;
@@ -501,9 +549,8 @@
             font-weight: 600;
             margin-bottom: 18px;
             color: #3a4a4f;
-            line-height: 1.3;
         }
-        .service-card p { color: #5d6b70; font-size: 15px; font-weight: 400; line-height: 1.7; }
+        .service-card p { color: #5d6b70; font-size: 15px; line-height: 1.7; }
         .service-card .price {
             font-size: 30px;
             font-weight: 600;
@@ -529,14 +576,8 @@
             transition: all 0.4s ease;
             position: relative;
         }
-        .package-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 60px rgba(58, 74, 79, 0.12);
-        }
-        .package-card.featured {
-            border-color: #8ba888;
-            transform: scale(1.05);
-        }
+        .package-card:hover { transform: translateY(-8px); box-shadow: 0 25px 60px rgba(58, 74, 79, 0.12); }
+        .package-card.featured { border-color: #8ba888; transform: scale(1.05); }
         .package-card.featured::before {
             content: 'Выгодно';
             position: absolute;
@@ -572,7 +613,7 @@
             text-decoration: line-through;
             margin-bottom: 20px;
         }
-        .package-card p { color: #5d6b70; font-size: 15px; margin-bottom: 28px; line-height: 1.6; }
+        .package-card p { color: #5d6b70; font-size: 15px; margin-bottom: 28px; }
         .package-card .btn { width: 100%; padding: 14px 30px; font-size: 15px; }
 
         .faq { background: #faf7f2; }
@@ -583,11 +624,6 @@
             margin-bottom: 16px;
             overflow: hidden;
             border: 1px solid rgba(168, 195, 180, 0.2);
-            transition: all 0.3s ease;
-        }
-        .faq-item:hover {
-            border-color: rgba(168, 195, 180, 0.5);
-            box-shadow: 0 8px 25px rgba(58, 74, 79, 0.06);
         }
         .faq-question {
             padding: 24px 30px;
@@ -628,20 +664,10 @@
             font-size: 15px;
             line-height: 1.8;
         }
-        .faq-item.active .faq-answer {
-            max-height: 300px;
-            padding: 0 30px 24px;
-        }
+        .faq-item.active .faq-answer { max-height: 300px; padding: 0 30px 24px; }
 
         .reviews { background: #ffffff; overflow: hidden; }
-        .reviews-slider {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
-            cursor: grab;
-        }
-        .reviews-slider:active { cursor: grabbing; }
+        .reviews-slider { max-width: 800px; margin: 0 auto; overflow: hidden; cursor: grab; }
         .reviews-track {
             display: flex;
             transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -659,26 +685,15 @@
             flex-direction: column;
             justify-content: center;
         }
-        .review-stars {
-            color: #f0b775;
-            font-size: 20px;
-            letter-spacing: 4px;
-            margin-bottom: 24px;
-        }
+        .review-stars { color: #f0b775; font-size: 20px; letter-spacing: 4px; margin-bottom: 24px; }
         .review-text {
             font-size: 17px;
             color: #3a4a4f;
             line-height: 1.8;
             font-style: italic;
             margin-bottom: 24px;
-            font-weight: 400;
         }
-        .review-author {
-            font-size: 15px;
-            color: #8ba888;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
+        .review-author { font-size: 15px; color: #8ba888; font-weight: 600; }
         .reviews-nav {
             display: flex;
             justify-content: center;
@@ -695,11 +710,7 @@
             transition: all 0.3s ease;
             padding: 0;
         }
-        .review-dot.active {
-            background: #8ba888;
-            width: 30px;
-            border-radius: 5px;
-        }
+        .review-dot.active { background: #8ba888; width: 30px; border-radius: 5px; }
 
         .form-section {
             background: 
@@ -714,14 +725,8 @@
             padding: 60px 50px;
             border-radius: 24px;
             box-shadow: 0 20px 70px rgba(58, 74, 79, 0.12);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
-        .form-container:hover { box-shadow: 0 30px 90px rgba(58, 74, 79, 0.18); }
-        .form-container h2 {
-            margin-bottom: 40px;
-            font-size: 36px;
-            font-family: 'Playfair Display', serif;
-        }
+        .form-container h2 { margin-bottom: 40px; font-size: 36px; font-family: 'Playfair Display', serif; }
         .form-group { margin-bottom: 24px; }
         .form-group label {
             display: block;
@@ -729,7 +734,6 @@
             color: #5d6b70;
             font-size: 14px;
             font-weight: 500;
-            transition: color 0.3s;
         }
         .form-group input,
         .form-group textarea {
@@ -749,7 +753,6 @@
             border-color: #a8c3b4;
             background: #ffffff;
             box-shadow: 0 0 0 4px rgba(168, 195, 180, 0.15);
-            transform: translateY(-2px);
         }
         .form-group textarea { resize: vertical; min-height: 120px; }
         .form-container .btn { width: 100%; margin-top: 10px; }
@@ -773,28 +776,17 @@
             color: #5d6b70;
             text-align: center;
         }
-        .contact-icon { font-size: 24px; line-height: 1; transition: transform 0.3s ease; }
+        .contact-icon { font-size: 24px; line-height: 1; }
         .contact-label:hover {
             border-color: #c5d3c8;
             background: #f5f1ea;
             transform: translateY(-3px);
         }
-        .contact-label:hover .contact-icon { transform: scale(1.2) rotate(-5deg); }
         .contact-option input[type="radio"]:checked + .contact-label {
             border-color: #8ba888;
             background: linear-gradient(135deg, rgba(168, 195, 180, 0.2), rgba(139, 168, 136, 0.15));
             color: #3a4a4f;
-            box-shadow: 0 0 0 4px rgba(168, 195, 180, 0.15);
             transform: translateY(-2px);
-        }
-        .contact-option input[type="radio"]:checked + .contact-label .contact-icon {
-            transform: scale(1.15);
-            animation: wiggle 0.5s ease;
-        }
-        @keyframes wiggle {
-            0%, 100% { transform: rotate(0); }
-            25% { transform: rotate(-10deg); }
-            75% { transform: rotate(10deg); }
         }
 
         .checkbox-group { display: flex; flex-direction: column; gap: 10px; }
@@ -806,11 +798,8 @@
             font-weight: 400;
             font-size: 14px;
             color: #5d6b70;
-            margin-bottom: 0;
             line-height: 1.6;
-            transition: color 0.3s;
         }
-        .checkbox-label:hover { color: #3a4a4f; }
         .checkbox-label input[type="checkbox"] {
             width: 20px;
             height: 20px;
@@ -818,34 +807,12 @@
             cursor: pointer;
             accent-color: #8ba888;
             flex-shrink: 0;
-            transition: transform 0.2s ease;
         }
-        .checkbox-label input[type="checkbox"]:hover { transform: scale(1.1); }
-        .checkbox-label a { color: #8ba888; text-decoration: underline; transition: color 0.3s; }
-        .checkbox-label a:hover { color: #73926f; }
+        .checkbox-label a { color: #8ba888; text-decoration: underline; }
 
         .contacts { background: #faf7f2; text-align: center; }
-        .contacts p { font-size: 18px; margin-bottom: 20px; color: #5d6b70; font-weight: 400; }
-        .contacts a {
-            color: #8ba888;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-            position: relative;
-            cursor: pointer;
-        }
-        .contacts a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: #8ba888;
-            transition: width 0.3s ease;
-        }
-        .contacts a:hover::after { width: 100%; }
-        .contacts a:hover { color: #73926f; }
+        .contacts p { font-size: 18px; margin-bottom: 20px; color: #5d6b70; }
+        .contacts a { color: #8ba888; text-decoration: none; font-weight: 500; }
 
         footer {
             background: #3a4a4f;
@@ -853,7 +820,6 @@
             padding: 50px 0;
             text-align: center;
             font-size: 14px;
-            font-weight: 400;
         }
         footer a { color: #a8c3b4; text-decoration: none; transition: color 0.3s; }
         footer a:hover { color: #ffffff; }
@@ -881,7 +847,6 @@
             box-shadow: 0 8px 25px rgba(139, 168, 136, 0.4);
         }
         .back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
-        .back-to-top:hover { background: #73926f; transform: translateY(-3px); box-shadow: 0 12px 35px rgba(139, 168, 136, 0.5); }
 
         .toast {
             position: fixed;
@@ -896,8 +861,6 @@
             z-index: 9999;
             max-width: 360px;
             text-align: center;
-            font-family: 'Inter', sans-serif;
-            line-height: 1.5;
             opacity: 0;
             transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
             box-shadow: 0 15px 40px rgba(58, 74, 79, 0.25);
@@ -905,7 +868,7 @@
         .toast.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
         .toast-success { background: linear-gradient(135deg, #a8c3b4 0%, #8ba888 100%); }
         .toast-error { background: linear-gradient(135deg, #e8b4b4 0%, #d99a9a 100%); }
-        .toast-icon { display: block; font-size: 36px; margin-bottom: 10px; line-height: 1; }
+        .toast-icon { display: block; font-size: 36px; margin-bottom: 10px; }
         .toast-message { position: relative; z-index: 1; }
 
         @media (max-width: 1024px) and (min-width: 769px) {
@@ -913,75 +876,19 @@
             .navbar ul a { font-size: 14px; }
             .navbar .btn-nav { padding: 10px 20px; font-size: 13px; }
             .hero h1 { font-size: 56px; }
-            .hero p { font-size: 18px; }
             section h2 { font-size: 44px; }
             section { padding: 90px 0; }
-            .counter-number { font-size: 56px; }
-            .timeline { gap: 15px; }
-            .timeline-icon { width: 70px; height: 70px; font-size: 28px; }
-            .timeline-step h3 { font-size: 18px; }
             .services-grid { grid-template-columns: repeat(2, 1fr); }
             .packages-grid { grid-template-columns: repeat(2, 1fr); }
             .package-card.featured { transform: scale(1); }
-            .quote-text { font-size: 28px; }
-            .form-container { padding: 50px 40px; }
         }
 
         @media (max-width: 768px) {
             .burger { display: flex; }
-            .navbar .container { justify-content: space-between; }
-            
-            .navbar ul {
-                position: fixed;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                width: 80%;
-                max-width: 320px;
-                background: #faf7f2;
-                flex-direction: column;
-                padding: 90px 30px 30px;
-                gap: 0;
-                box-shadow: -10px 0 40px rgba(58, 74, 79, 0.2);
-                transform: translateX(100%);
-                transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-                display: flex;
-                align-items: flex-start;
-                overflow-y: auto;
-                z-index: 1001;
-                pointer-events: auto;
-            }
-            .navbar ul.open { 
-                transform: translateX(0);
-            }
-            
-            .navbar ul li {
-                width: 100%;
-                border-bottom: 1px solid rgba(168, 195, 180, 0.2);
-                list-style: none;
-            }
-            .navbar ul li:last-child {
-                border-bottom: none;
-                margin-top: 20px;
-            }
-            .navbar ul a {
-                display: block;
-                padding: 18px 0;
-                font-size: 17px;
-                color: #3a4a4f;
-            }
-            .navbar ul a::after { display: none; }
-            .navbar ul .btn-nav {
-                display: block;
-                text-align: center;
-                padding: 16px 20px;
-                width: 100%;
-                border-radius: 50px;
-            }
-
-            .logo.hidden { opacity: 0; pointer-events: none; }
-            .mobile-phone { display: flex; margin-right: 8px; }
-            .navbar .container { gap: 8px; }
+            .navbar .container { justify-content: space-between; gap: 8px; }
+            .navbar ul { display: none; }
+            .mobile-phone { display: flex; margin-left: auto; margin-right: 8px; }
+            .mobile-menu { display: flex; }
 
             .hero h1 { font-size: 42px; }
             .hero p { font-size: 17px; }
@@ -994,7 +901,6 @@
             .form-container { padding: 35px 22px; }
             .form-container h2 { font-size: 26px; }
             .toast { max-width: 90%; padding: 20px 24px; font-size: 14px; }
-            .toast-icon { font-size: 32px; margin-bottom: 8px; }
             .contact-options { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
             .contact-label { padding: 12px 6px; font-size: 12px; }
             .contact-icon { font-size: 20px; }
@@ -1027,7 +933,7 @@
 
     <nav class="navbar" id="navbar">
         <div class="container">
-            <a href="#" class="logo" id="logo">
+            <a href="#" class="logo">
                 <div class="logo-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m0 0c-3.5 0-6-2.5-6-6s2.5-6 6-6 6 2.5 6 6-2.5 6-6 6z"/>
@@ -1051,7 +957,7 @@
                 <span></span>
             </button>
 
-            <ul id="navMenu">
+            <ul>
                 <li><a href="#about">Обо мне</a></li>
                 <li><a href="#how">Как я работаю</a></li>
                 <li><a href="#services">Услуги</a></li>
@@ -1061,6 +967,34 @@
             </ul>
         </div>
     </nav>
+
+    <!-- МОБИЛЬНОЕ МЕНЮ -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m0 0c-3.5 0-6-2.5-6-6s2.5-6 6-6 6 2.5 6 6-2.5 6-6 6z"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-name">Тихое место</span>
+                    <span class="logo-sub">Психолог Елизавета</span>
+                </div>
+            </a>
+            <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Закрыть">×</button>
+        </div>
+        <nav class="mobile-menu-nav">
+            <a href="#about">Обо мне</a>
+            <a href="#how">Как я работаю</a>
+            <a href="#services">Услуги</a>
+            <a href="#reviews">Отзывы</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+        <div class="mobile-menu-footer">
+            <a href="#form" class="btn">Записаться на консультацию</a>
+        </div>
+    </div>
 
     <div class="menu-overlay" id="menuOverlay"></div>
 
@@ -1185,7 +1119,7 @@
                         </svg>
                     </div>
                     <h3>Парная консультация</h3>
-                    <p>Помощь парам в сложных ситуациях. Работа с коммуникацией и конфликтами. 80 минут.</p>
+                    <p>Помощь парам в сложных ситуациях. 80 минут.</p>
                     <div class="price">5 000 ₽</div>
                 </div>
                 <div class="service-card">
@@ -1195,7 +1129,7 @@
                         </svg>
                     </div>
                     <h3>Онлайн-консультация</h3>
-                    <p>Работа из любой точки мира через Zoom или Telegram. 50 минут.</p>
+                    <p>Работа из любой точки мира. 50 минут.</p>
                     <div class="price">2 500 ₽</div>
                 </div>
             </div>
@@ -1236,49 +1170,24 @@
             <h2>Частые вопросы</h2>
             <div class="faq-list">
                 <div class="faq-item">
-                    <div class="faq-question">
-                        Сколько длится одна сессия?
-                        <div class="faq-toggle">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        Индивидуальная консультация — 50 минут, парная — 80 минут. Это оптимальное время, за которое мы успеваем глубоко разобрать запрос и наметить шаги.
-                    </div>
+                    <div class="faq-question">Сколько длится одна сессия?<div class="faq-toggle">+</div></div>
+                    <div class="faq-answer">Индивидуальная консультация — 50 минут, парная — 80 минут. Это оптимальное время, за которое мы успеваем глубоко разобрать запрос и наметить шаги.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">
-                        Как проходит онлайн-консультация?
-                        <div class="faq-toggle">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        Мы встречаемся в Zoom или Telegram в назначенное время. Вам нужно только тихое место, где вас никто не потревожит, и стабильный интернет. Всё остальное — как на обычной встрече.
-                    </div>
+                    <div class="faq-question">Как проходит онлайн-консультация?<div class="faq-toggle">+</div></div>
+                    <div class="faq-answer">Мы встречаемся в Zoom или Telegram в назначенное время. Вам нужно только тихое место и стабильный интернет.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">
-                        Конфиденциально ли это?
-                        <div class="faq-toggle">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        Да, абсолютно. Всё, что происходит на сессии, остаётся между нами. Я не передаю информацию третьим лицам и не разглашаю содержание встреч. Это основа психологической работы.
-                    </div>
+                    <div class="faq-question">Конфиденциально ли это?<div class="faq-toggle">+</div></div>
+                    <div class="faq-answer">Да, абсолютно. Всё, что происходит на сессии, остаётся между нами. Я не передаю информацию третьим лицам.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">
-                        Сколько нужно встреч?
-                        <div class="faq-toggle">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        Зависит от запроса. Иногда достаточно 3-5 сессий, иногда нужна длительная работа. На первой встрече мы обсудим ваш запрос и я предложу примерный план.
-                    </div>
+                    <div class="faq-question">Сколько нужно встреч?<div class="faq-toggle">+</div></div>
+                    <div class="faq-answer">Зависит от запроса. Иногда достаточно 3-5 сессий, иногда нужна длительная работа.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">
-                        Что делать, если я не знаю, с чего начать?
-                        <div class="faq-toggle">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        Это нормально. Многие приходят с ощущением «что-то не так, но не понимаю что». Мы разберёмся вместе. Начнём с того, что вас беспокоит прямо сейчас.
-                    </div>
+                    <div class="faq-question">Что делать, если я не знаю, с чего начать?<div class="faq-toggle">+</div></div>
+                    <div class="faq-answer">Это нормально. Мы разберёмся вместе. Начнём с того, что вас беспокоит прямо сейчас.</div>
                 </div>
             </div>
         </div>
@@ -1291,21 +1200,21 @@
                 <div class="reviews-track" id="reviewsTrack">
                     <div class="review-card">
                         <div class="review-stars">★★★★★</div>
-                        <div class="review-text">«Елизавета помогла мне справиться с постоянной тревогой. Я наконец-то научилась расслабляться и не накручивать себя. Спасибо за бережность и профессионализм.»</div>
+                        <div class="review-text">«Елизавета помогла мне справиться с постоянной тревогой. Я наконец-то научилась расслабляться и не накручивать себя.»</div>
                         <div class="review-author">— Анна К.</div>
                     </div>
                     <div class="review-card">
                         <div class="review-stars">★★★★★</div>
-                        <div class="review-text">«Обратился с проблемами в отношениях. За несколько месяцев работы увидел ситуацию совершенно по-другому. Стало легче и с женой, и с собой.»</div>
+                        <div class="review-text">«Обратился с проблемами в отношениях. За несколько месяцев работы увидел ситуацию совершенно по-другому. Стало легче.»</div>
                         <div class="review-author">— Дмитрий М.</div>
                     </div>
                     <div class="review-card">
                         <div class="review-stars">★★★★★</div>
-                        <div class="review-text">«Долго не решалась пойти к психологу. Елизавета создала очень безопасную атмосферу с первой встречи. Теперь это моё время для себя.»</div>
+                        <div class="review-text">«Долго не решалась пойти к психологу. Елизавета создала очень безопасную атмосферу с первой встречи.»</div>
                         <div class="review-author">— Мария С.</div>
                     </div>
                 </div>
-                <div class="reviews-nav" id="reviewsNav">
+                <div class="reviews-nav">
                     <button class="review-dot active" data-index="0"></button>
                     <button class="review-dot" data-index="1"></button>
                     <button class="review-dot" data-index="2"></button>
@@ -1336,24 +1245,15 @@
                         <div class="contact-options">
                             <label class="contact-option">
                                 <input type="radio" name="contact" value="Номер" checked>
-                                <span class="contact-label">
-                                    <span class="contact-icon">📞</span>
-                                    Номер
-                                </span>
+                                <span class="contact-label"><span class="contact-icon">📞</span>Номер</span>
                             </label>
                             <label class="contact-option">
                                 <input type="radio" name="contact" value="Telegram">
-                                <span class="contact-label">
-                                    <span class="contact-icon">💬</span>
-                                    Telegram
-                                </span>
+                                <span class="contact-label"><span class="contact-icon">💬</span>Telegram</span>
                             </label>
                             <label class="contact-option">
                                 <input type="radio" name="contact" value="MAX">
-                                <span class="contact-label">
-                                    <span class="contact-icon">📱</span>
-                                    MAX
-                                </span>
+                                <span class="contact-label"><span class="contact-icon">📱</span>MAX</span>
                             </label>
                         </div>
                     </div>
@@ -1372,9 +1272,9 @@
     <section class="contacts reveal" id="contacts">
         <div class="container">
             <h2>Контакты</h2>
-            <p>📞 <a href="tel:+79991234567" data-copy="+79991234567">+7 (999) 123-45-67</a></p>
-            <p>✉️ <a href="mailto:psy@example.com" data-copy="psy@example.com">psy@example.com</a></p>
-            <p>💬 Telegram: <a href="https://t.me/username" data-copy="@username">@username</a></p>
+            <p>📞 <a href="tel:+79991234567">+7 (999) 123-45-67</a></p>
+            <p>✉️ <a href="mailto:psy@example.com">psy@example.com</a></p>
+            <p>💬 Telegram: <a href="https://t.me/username">@username</a></p>
         </div>
     </section>
 
@@ -1395,45 +1295,26 @@
     <script>
         // БУРГЕР-МЕНЮ
         const burger = document.getElementById('burger');
-        const navMenu = document.getElementById('navMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
         const menuOverlay = document.getElementById('menuOverlay');
-        const logo = document.getElementById('logo');
 
-        burger.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const isOpen = navMenu.classList.contains('open');
-            
-            if (isOpen) {
-                burger.classList.remove('active');
-                navMenu.classList.remove('open');
-                menuOverlay.classList.remove('show');
-                logo.classList.remove('hidden');
-                document.body.style.overflow = '';
-            } else {
-                burger.classList.add('active');
-                navMenu.classList.add('open');
-                menuOverlay.classList.add('show');
-                logo.classList.add('hidden');
-                document.body.style.overflow = 'hidden';
-            }
-        });
-
-        menuOverlay.addEventListener('click', function() {
-            burger.classList.remove('active');
-            navMenu.classList.remove('open');
+        function openMenu() {
+            mobileMenu.classList.add('open');
+            menuOverlay.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMenu() {
+            mobileMenu.classList.remove('open');
             menuOverlay.classList.remove('show');
-            logo.classList.remove('hidden');
             document.body.style.overflow = '';
-        });
+        }
 
-        navMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                burger.classList.remove('active');
-                navMenu.classList.remove('open');
-                menuOverlay.classList.remove('show');
-                logo.classList.remove('hidden');
-                document.body.style.overflow = '';
-            });
+        burger.addEventListener('click', openMenu);
+        mobileMenuClose.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
         });
 
         // ПРОГРЕСС-БАР
@@ -1441,43 +1322,29 @@
         window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY;
             const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = (scrollTop / docHeight) * 100;
-            progressBar.style.width = progress + '%';
+            progressBar.style.width = (scrollTop / docHeight) * 100 + '%';
         });
 
-        // НАВИГАЦИЯ ПРИ СКРОЛЛЕ
+        // НАВИГАЦИЯ
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
         });
 
         // КНОПКА НАВЕРХ
         const backToTop = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) {
-                backToTop.classList.add('show');
-            } else {
-                backToTop.classList.remove('show');
-            }
+            backToTop.classList.toggle('show', window.scrollY > 400);
         });
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-        // SCROLL REVEAL
-        const revealElements = document.querySelectorAll('.reveal');
+        // REVEAL
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
         }, { threshold: 0.15 });
-        revealElements.forEach(el => revealObserver.observe(el));
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
         // СЧЁТЧИКИ
         const counters = document.querySelectorAll('.counter-number');
@@ -1488,19 +1355,18 @@
                     countersStarted = true;
                     counters.forEach(counter => {
                         const target = +counter.dataset.target;
-                        const duration = 2000;
-                        const step = target / (duration / 16);
+                        const step = target / (2000 / 16);
                         let current = 0;
-                        const updateCounter = () => {
+                        const update = () => {
                             current += step;
                             if (current < target) {
                                 counter.textContent = Math.floor(current);
-                                requestAnimationFrame(updateCounter);
+                                requestAnimationFrame(update);
                             } else {
                                 counter.textContent = target + (target >= 100 ? '+' : '');
                             }
                         };
-                        updateCounter();
+                        update();
                     });
                 }
             });
@@ -1508,53 +1374,40 @@
         if (counters.length) countersObserver.observe(counters[0].parentElement.parentElement);
 
         // FAQ
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const item = question.parentElement;
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
                 const wasActive = item.classList.contains('active');
                 document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
                 if (!wasActive) item.classList.add('active');
             });
         });
 
-        // ОТЗЫВЫ — СВАЙП + ТОЧКИ + АВТО
+        // ОТЗЫВЫ
         const reviewsSlider = document.getElementById('reviewsSlider');
         const reviewsTrack = document.getElementById('reviewsTrack');
         const reviewDots = document.querySelectorAll('.review-dot');
         const totalReviews = reviewDots.length;
-        let currentReview = 0;
-        let startX = 0;
-        let currentX = 0;
-        let isDragging = false;
+        let currentReview = 0, startX = 0, currentX = 0, isDragging = false;
 
         function goToReview(index) {
             if (index < 0) index = totalReviews - 1;
             if (index >= totalReviews) index = 0;
             currentReview = index;
             reviewsTrack.style.transform = `translateX(-${index * 100}%)`;
-            reviewDots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
+            reviewDots.forEach((dot, i) => dot.classList.toggle('active', i === index));
         }
 
         reviewDots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                goToReview(+dot.dataset.index);
-                resetAutoPlay();
-            });
+            dot.addEventListener('click', () => { goToReview(+dot.dataset.index); resetAutoPlay(); });
         });
 
         reviewsSlider.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            startX = e.pageX;
-            currentX = e.pageX;
+            isDragging = true; startX = currentX = e.pageX;
             reviewsTrack.style.transition = 'none';
         });
-
         reviewsSlider.addEventListener('touchstart', (e) => {
-            isDragging = true;
-            startX = e.touches[0].clientX;
-            currentX = e.touches[0].clientX;
+            isDragging = true; startX = currentX = e.touches[0].clientX;
             reviewsTrack.style.transition = 'none';
         }, { passive: true });
 
@@ -1562,91 +1415,53 @@
             if (!isDragging) return;
             currentX = clientX;
             const diff = currentX - startX;
-            const offset = -currentReview * 100;
             const percentMove = (diff / reviewsSlider.offsetWidth) * 100;
-            reviewsTrack.style.transform = `translateX(${offset + percentMove}%)`;
+            reviewsTrack.style.transform = `translateX(${-currentReview * 100 + percentMove}%)`;
         }
-
-        document.addEventListener('mousemove', (e) => {
-            if (isDragging) onMove(e.pageX);
-        });
-
-        reviewsSlider.addEventListener('touchmove', (e) => {
-            onMove(e.touches[0].clientX);
-        }, { passive: true });
+        document.addEventListener('mousemove', (e) => { if (isDragging) onMove(e.pageX); });
+        reviewsSlider.addEventListener('touchmove', (e) => onMove(e.touches[0].clientX), { passive: true });
 
         function onEnd() {
             if (!isDragging) return;
             isDragging = false;
             reviewsTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
             const diff = currentX - startX;
-            const threshold = 50;
-            
-            if (diff < -threshold) {
-                goToReview(currentReview + 1);
-            } else if (diff > threshold) {
-                goToReview(currentReview - 1);
-            } else {
-                goToReview(currentReview);
-            }
+            if (diff < -50) goToReview(currentReview + 1);
+            else if (diff > 50) goToReview(currentReview - 1);
+            else goToReview(currentReview);
             resetAutoPlay();
         }
-
         document.addEventListener('mouseup', onEnd);
         reviewsSlider.addEventListener('touchend', onEnd);
 
-        let autoPlayTimer = setInterval(() => {
-            goToReview(currentReview + 1);
-        }, 6000);
-
+        let autoPlayTimer = setInterval(() => goToReview(currentReview + 1), 6000);
         function resetAutoPlay() {
             clearInterval(autoPlayTimer);
-            autoPlayTimer = setInterval(() => {
-                goToReview(currentReview + 1);
-            }, 6000);
+            autoPlayTimer = setInterval(() => goToReview(currentReview + 1), 6000);
         }
-
-        // КОПИРОВАНИЕ КОНТАКТОВ
-        document.querySelectorAll('[data-copy]').forEach(link => {
-            link.addEventListener('click', (e) => {
-                const text = link.dataset.copy;
-                if (text.startsWith('+') || text.includes('@')) {
-                    e.preventDefault();
-                    navigator.clipboard.writeText(text).then(() => {
-                        showToast('Скопировано: ' + text, 'success');
-                    });
-                }
-            });
-        });
 
         // УВЕДОМЛЕНИЯ
         function showToast(message, type) {
             const toast = document.createElement('div');
             toast.className = 'toast toast-' + type;
-
-            const icon = type === 'success' ? '💚' : 'ℹ️';
-            toast.innerHTML = `<div class="toast-icon">${icon}</div><div class="toast-message">${message}</div>`;
+            toast.innerHTML = `<div class="toast-icon">${type === 'success' ? '💚' : 'ℹ️'}</div><div class="toast-message">${message}</div>`;
             document.body.appendChild(toast);
-
             setTimeout(() => toast.classList.add('show'), 10);
-
             setTimeout(() => {
                 toast.classList.remove('show');
                 setTimeout(() => toast.remove(), 400);
             }, 3500);
         }
 
-        // СМЕНА ПОДПИСИ ПРИ ВЫБОРЕ СВЯЗИ
+        // СМЕНА ПОДПИСИ
         const phoneLabel = document.getElementById('phone-label');
         const phoneInput = document.getElementById('phone');
         const contactRadios = document.querySelectorAll('input[name="contact"]');
-
         const labels = {
             'Номер': 'Введите ваш номер телефона',
             'Telegram': 'Введите ваш @username в Telegram или номер',
             'MAX': 'Введите ваш номер в MAX'
         };
-
         const placeholders = {
             'Номер': '+7 (___) ___-__-__',
             'Telegram': '@ваш_username или +7 (___) ___-__-__',
@@ -1659,26 +1474,19 @@
                 phoneLabel.textContent = labels[value];
                 phoneInput.placeholder = placeholders[value];
                 phoneInput.value = '';
-
-                if (value === 'Telegram') {
-                    phoneInput.removeAttribute('maxlength');
-                } else {
-                    phoneInput.setAttribute('maxlength', '18');
-                }
+                if (value === 'Telegram') phoneInput.removeAttribute('maxlength');
+                else phoneInput.setAttribute('maxlength', '18');
             });
         });
 
-        // МАСКА ТЕЛЕФОНА
+        // МАСКА
         phoneInput.addEventListener('focus', () => {
             const contactType = document.querySelector('input[name="contact"]:checked').value;
-            if (contactType !== 'Telegram' && !phoneInput.value) {
-                phoneInput.value = '+7 ';
-            }
+            if (contactType !== 'Telegram' && !phoneInput.value) phoneInput.value = '+7 ';
         });
 
         phoneInput.addEventListener('input', (e) => {
             const contactType = document.querySelector('input[name="contact"]:checked').value;
-
             if (contactType === 'Telegram') {
                 let value = e.target.value;
                 if (value.includes('@')) return;
@@ -1687,71 +1495,56 @@
                     if (digits.startsWith('8')) digits = '7' + digits.slice(1);
                     if (digits.startsWith('7')) digits = digits.slice(1);
                     if (digits.length > 10) digits = digits.slice(0, 10);
-
                     let formatted = '+7';
                     if (digits.length > 0) formatted += ' (' + digits.slice(0, 3);
                     if (digits.length >= 3) formatted += ') ' + digits.slice(3, 6);
                     if (digits.length >= 6) formatted += '-' + digits.slice(6, 8);
                     if (digits.length >= 8) formatted += '-' + digits.slice(8, 10);
-
                     e.target.value = formatted;
                 }
                 return;
             }
-
             let value = e.target.value.replace(/\D/g, '');
             if (value.startsWith('8')) value = '7' + value.slice(1);
             if (value.startsWith('7')) value = value.slice(1);
             if (value.length > 10) value = value.slice(0, 10);
-
             let formatted = '+7';
             if (value.length > 0) formatted += ' (' + value.slice(0, 3);
             if (value.length >= 3) formatted += ') ' + value.slice(3, 6);
             if (value.length >= 6) formatted += '-' + value.slice(6, 8);
             if (value.length >= 8) formatted += '-' + value.slice(8, 10);
-
             e.target.value = formatted;
         });
 
         phoneInput.addEventListener('blur', () => {
-            if (phoneInput.value === '+7' || phoneInput.value === '+7 ') {
-                phoneInput.value = '';
-            }
+            if (phoneInput.value === '+7' || phoneInput.value === '+7 ') phoneInput.value = '';
         });
 
         phoneInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Backspace' && phoneInput.value === '+7 ') {
-                e.preventDefault();
-            }
+            if (e.key === 'Backspace' && phoneInput.value === '+7 ') e.preventDefault();
         });
 
-        // ОТПРАВКА ФОРМЫ
+        // ОТПРАВКА
         document.getElementById('zayavka').addEventListener('submit', async (e) => {
             e.preventDefault();
-
             const nameInput = e.target.querySelector('input[name="name"]');
             const phoneField = document.getElementById('phone');
             const agree = document.getElementById('agree');
 
             if (!nameInput.value.trim()) {
                 showToast('Пожалуйста, укажите ваше имя', 'error');
-                nameInput.focus();
-                return;
+                nameInput.focus(); return;
             }
-
             if (!phoneField.value.trim() || phoneField.value.trim() === '+7') {
                 showToast('Пожалуйста, укажите ваш контакт', 'error');
-                phoneField.focus();
-                return;
+                phoneField.focus(); return;
             }
-
             if (!agree.checked) {
-                showToast('Пожалуйста, подтвердите согласие на обработку персональных данных', 'error');
+                showToast('Пожалуйста, подтвердите согласие', 'error');
                 return;
             }
 
             const btn = e.target.querySelector('button[type="submit"]');
-            if (btn.disabled) return;
             btn.disabled = true;
             btn.textContent = 'Отправка...';
 
@@ -1765,16 +1558,14 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
                 });
-
                 showToast('Спасибо, ' + data.name + '!<br>Ваша заявка отправлена.<br>Свяжусь с вами через ' + data.contact + '.', 'success');
                 e.target.reset();
                 btn.disabled = false;
                 btn.textContent = 'Отправить заявку';
-
                 phoneLabel.textContent = labels['Номер'];
                 phoneInput.placeholder = placeholders['Номер'];
             } catch (error) {
-                showToast('Ошибка отправки.<br>Попробуйте позже или напишите мне напрямую.', 'error');
+                showToast('Ошибка отправки.<br>Попробуйте позже или напишите напрямую.', 'error');
                 btn.disabled = false;
                 btn.textContent = 'Отправить заявку';
             }
