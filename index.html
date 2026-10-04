@@ -445,95 +445,46 @@
         }
         footer a:hover { color: #ffffff; }
 
-        /* УВЕДОМЛЕНИЯ */
-        .toast-backdrop {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(58, 74, 79, 0.5);
-            backdrop-filter: blur(8px);
-            z-index: 9998;
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-        .toast-backdrop.show { opacity: 1; }
-
+        /* УВЕДОМЛЕНИЯ (компактные, без блюра) */
         .toast {
             position: fixed;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) scale(0.7);
-            padding: 50px 70px;
-            border-radius: 32px;
-            color: white;
-            font-size: 19px;
+            transform: translate(-50%, -50%) scale(0.9);
+            padding: 22px 32px;
+            border-radius: 16px;
+            color: #ffffff;
+            font-size: 15px;
             font-weight: 500;
             z-index: 9999;
-            max-width: 520px;
+            max-width: 360px;
             text-align: center;
             font-family: 'Inter', sans-serif;
-            line-height: 1.7;
+            line-height: 1.5;
             opacity: 0;
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            overflow: hidden;
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 15px 40px rgba(58, 74, 79, 0.25);
         }
-        .toast.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-
+        .toast.show {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
         .toast-success {
             background: linear-gradient(135deg, #a8c3b4 0%, #8ba888 100%);
-            box-shadow: 0 30px 80px rgba(139, 168, 136, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
         }
         .toast-error {
-            background: linear-gradient(135deg, #d99a9a 0%, #c47c7c 100%);
-            box-shadow: 0 30px 80px rgba(196, 124, 124, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+            background: linear-gradient(135deg, #e8b4b4 0%, #d99a9a 100%);
         }
-
-        .toast::before {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
-            animation: shimmer 3s ease-in-out infinite;
-            pointer-events: none;
-        }
-        @keyframes shimmer {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(10%, 10%); }
-        }
-
         .toast-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 24px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            font-size: 56px;
+            display: block;
+            font-size: 36px;
+            margin-bottom: 10px;
             line-height: 1;
-            animation: iconPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
+        }
+        .toast-message {
             position: relative;
+            z-index: 1;
         }
-        .toast-icon::after {
-            content: '';
-            position: absolute;
-            inset: -8px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            animation: ripple 2s ease-out infinite;
-        }
-        @keyframes ripple {
-            0% { transform: scale(1); opacity: 0.6; }
-            100% { transform: scale(1.5); opacity: 0; }
-        }
-        @keyframes iconPop {
-            0% { transform: scale(0) rotate(-180deg); }
-            60% { transform: scale(1.2) rotate(10deg); }
-            100% { transform: scale(1) rotate(0deg); }
-        }
-
-        .toast-message { position: relative; z-index: 1; }
 
         /* MOBILE */
         @media (max-width: 768px) {
@@ -549,8 +500,15 @@
             .about-photo::before { display: none; }
             .form-container { padding: 40px 25px; }
             .form-container h2 { font-size: 28px; }
-            .toast { max-width: 90%; padding: 40px 35px; font-size: 16px; border-radius: 24px; }
-            .toast-icon { width: 80px; height: 80px; font-size: 44px; margin-bottom: 20px; }
+            .toast {
+                max-width: 90%;
+                padding: 20px 24px;
+                font-size: 14px;
+            }
+            .toast-icon {
+                font-size: 32px;
+                margin-bottom: 8px;
+            }
             .contact-options { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
             .contact-label { padding: 12px 6px; font-size: 12px; }
             .contact-icon { font-size: 20px; }
@@ -715,17 +673,12 @@
         }, { threshold: 0.15 });
         revealElements.forEach(el => revealObserver.observe(el));
 
-        // УВЕДОМЛЕНИЯ
+        // УВЕДОМЛЕНИЯ (компактные)
         function showToast(message, type) {
-            const backdrop = document.createElement('div');
-            backdrop.className = 'toast-backdrop';
-            document.body.appendChild(backdrop);
-            setTimeout(() => backdrop.classList.add('show'), 10);
-
             const toast = document.createElement('div');
             toast.className = 'toast toast-' + type;
 
-            const icon = type === 'success' ? '💚' : '❌';
+            const icon = type === 'success' ? '💚' : 'ℹ️';
             toast.innerHTML = `<div class="toast-icon">${icon}</div><div class="toast-message">${message}</div>`;
             document.body.appendChild(toast);
 
@@ -733,12 +686,8 @@
 
             setTimeout(() => {
                 toast.classList.remove('show');
-                backdrop.classList.remove('show');
-                setTimeout(() => {
-                    toast.remove();
-                    backdrop.remove();
-                }, 500);
-            }, 4500);
+                setTimeout(() => toast.remove(), 400);
+            }, 3500);
         }
 
         // СМЕНА ПОДПИСИ ПРИ ВЫБОРЕ СВЯЗИ
@@ -834,7 +783,6 @@
         document.getElementById('zayavka').addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // ПРОВЕРКА ПОЛЕЙ
             const nameInput = e.target.querySelector('input[name="name"]');
             const phoneField = document.getElementById('phone');
             const agree = document.getElementById('agree');
@@ -852,7 +800,7 @@
             }
 
             if (!agree.checked) {
-                showToast('Пожалуйста, подтвердите согласие<br>на обработку персональных данных', 'error');
+                showToast('Пожалуйста, подтвердите согласие на обработку персональных данных', 'error');
                 return;
             }
 
