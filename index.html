@@ -20,7 +20,6 @@
         }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-        /* НАВИГАЦИЯ */
         .navbar {
             position: fixed;
             top: 0; left: 0; right: 0;
@@ -67,7 +66,6 @@
         }
         .navbar .btn-nav:hover { background: #73926f; color: white; transform: translateY(-2px); }
 
-        /* HERO */
         .hero {
             background: 
                 linear-gradient(135deg, rgba(58, 74, 79, 0.6), rgba(139, 168, 136, 0.45)),
@@ -117,7 +115,6 @@
         .btn:hover { background: #8ba888; transform: translateY(-3px); box-shadow: 0 12px 40px rgba(168, 195, 180, 0.6); }
         .btn:disabled { background: #c5d3c8; cursor: not-allowed; transform: none; }
 
-        /* SECTIONS */
         section { padding: 120px 0; }
         section h2 {
             font-family: 'Playfair Display', serif;
@@ -129,7 +126,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* ABOUT */
         .about { background: #faf7f2; }
         .about-grid {
             display: grid;
@@ -154,7 +150,6 @@
         }
         .about-text p:last-child { margin-bottom: 0; }
 
-        /* SERVICES */
         .services { background: #f0ebe2; }
         .services-grid {
             display: grid;
@@ -187,11 +182,10 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* FORM */
         .form-section { 
             background: 
                 linear-gradient(135deg, rgba(240, 235, 226, 0.9), rgba(250, 247, 242, 0.9)),
-                url('form-bg.jpg') center/cover no-repeat;
+                url('about.jpg') center/cover no-repeat;
         }
         .form-container {
             max-width: 540px;
@@ -237,7 +231,6 @@
         .form-group textarea { resize: vertical; min-height: 120px; }
         .form-container .btn { width: 100%; margin-top: 10px; }
 
-        /* ВЫБОР СПОСОБА СВЯЗИ */
         .contact-options {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -274,7 +267,6 @@
             transform: translateY(-2px);
         }
 
-        /* ЧЕКБОКС */
         .checkbox-group {
             display: flex;
             flex-direction: column;
@@ -306,13 +298,11 @@
         }
         .checkbox-label a:hover { color: #73926f; }
 
-        /* CONTACTS */
         .contacts { background: #faf7f2; text-align: center; }
         .contacts p { font-size: 18px; margin-bottom: 20px; color: #5d6b70; font-weight: 400; }
         .contacts a { color: #8ba888; text-decoration: none; font-weight: 500; transition: color 0.3s; }
         .contacts a:hover { color: #73926f; }
 
-        /* FOOTER */
         footer {
             background: #3a4a4f;
             color: #c5d3c8;
@@ -328,7 +318,6 @@
         }
         footer a:hover { color: #ffffff; }
 
-        /* УВЕДОМЛЕНИЯ */
         .toast {
             position: fixed;
             top: 50%;
@@ -375,7 +364,6 @@
         }
         .toast-backdrop.show { opacity: 1; }
 
-        /* MOBILE */
         @media (max-width: 768px) {
             .navbar ul { display: none; }
             .navbar .container { justify-content: center; }
@@ -421,7 +409,7 @@
             <h2>Обо мне</h2>
             <div class="about-grid">
                 <div class="about-photo">
-                    <img src="about.jpg" alt="Золотова Елизавета">
+                    <img src="form-bg.jpg" alt="Золотова Елизавета">
                 </div>
                 <div class="about-text">
                     <p>Я — практикующий психолог с опытом работы более 3 лет. Специализируюсь на работе с тревожными состояниями, отношениями и самооценкой. В своей работе использую методы когнитивно-поведенческой терапии и бережный подход к каждому клиенту.</p>
