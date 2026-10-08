@@ -925,6 +925,139 @@
             .faq-item.active .faq-answer { padding: 0 20px 18px; }
             .back-to-top { bottom: 20px; right: 20px; width: 44px; height: 44px; font-size: 18px; }
         }
+
+        /* Спокойная редакционная подача: меньше эффектов, больше воздуха и ясная иерархия. */
+        :root {
+            --ink: #303d38;
+            --muted: #68716a;
+            --paper: #f7f5ef;
+            --sage: #718a73;
+            --sage-dark: #526c56;
+            --line: #e3e4d9;
+        }
+        body { color: var(--ink); background: var(--paper); }
+        .container { max-width: 1160px; }
+        .navbar { padding: 12px 0; background: rgba(247,245,239,.94); border-bottom-color: var(--line); }
+        .navbar.scrolled { padding: 10px 0; box-shadow: 0 8px 28px rgba(48,61,56,.07); }
+        .logo-icon { width: 42px; height: 42px; border-radius: 50%; background: var(--sage); box-shadow: none; }
+        .logo-icon::before { display: none; }
+        .logo-name { color: var(--ink); font-size: 19px; }
+        .logo-sub { color: var(--sage-dark); letter-spacing: 1.8px; }
+        .navbar ul { gap: 25px; }
+        .navbar ul a { color: var(--ink); font-size: 14px; }
+        .navbar ul a::after { background: var(--sage); }
+        .navbar .btn-nav { background: var(--sage-dark); padding: 11px 22px; }
+        .navbar .btn-nav:hover { background: #415845; }
+        .hero {
+            min-height: 690px;
+            height: min(790px, 100svh);
+            padding: 125px 20px 72px;
+            background: radial-gradient(ellipse at 5% 10%, #edf0e6 0, transparent 44%), var(--paper);
+            text-align: left;
+            justify-content: center;
+        }
+        .hero-layout {
+            width: 100%; max-width: 1160px; margin: 0 auto;
+            display: grid; grid-template-columns: 1.06fr .94fr; gap: clamp(38px, 7vw, 100px);
+            align-items: center;
+        }
+        .hero-copy { max-width: 590px; }
+        .hero-eyebrow {
+            color: var(--sage-dark); font-size: 12px; letter-spacing: 2.2px;
+            font-weight: 600; text-transform: uppercase; margin-bottom: 24px;
+        }
+        .hero h1 {
+            color: var(--ink); text-shadow: none; font-size: clamp(50px, 5.4vw, 72px);
+            line-height: 1.06; letter-spacing: -1.8px; font-weight: 500; margin-bottom: 25px;
+        }
+        .hero h1 em { color: var(--sage-dark); font-weight: 400; }
+        .hero p {
+            color: var(--muted); font-size: 18px; font-weight: 400; line-height: 1.75;
+            text-shadow: none; margin: 0 0 30px; max-width: 510px;
+        }
+        .hero .btn { animation: none; }
+        .hero-visual { position: relative; max-width: 470px; justify-self: end; width: 100%; }
+        .hero-visual img {
+            display: block; width: 100%; aspect-ratio: 4 / 4.6; object-fit: cover;
+            border-radius: 48% 48% 24px 24px; box-shadow: 0 24px 64px rgba(48,61,56,.13);
+        }
+        .hero-caption {
+            position: absolute; left: -34px; bottom: 34px; max-width: 235px;
+            padding: 18px 22px; border: 1px solid rgba(227,228,217,.9); border-radius: 16px;
+            background: rgba(250,249,245,.95); color: var(--ink); font-family: 'Playfair Display', serif;
+            font-size: 18px; line-height: 1.4; box-shadow: 0 12px 32px rgba(48,61,56,.08);
+        }
+        .btn {
+            background: var(--sage-dark); border-radius: 8px; padding: 16px 28px;
+            box-shadow: 0 8px 20px rgba(82,108,86,.18); letter-spacing: 0; overflow: hidden;
+        }
+        .btn:hover { background: #415845; box-shadow: 0 12px 24px rgba(82,108,86,.2); }
+        section { padding: 96px 0; }
+        section h2 { color: var(--ink); font-size: clamp(34px, 4vw, 48px); letter-spacing: -0.8px; margin-bottom: 44px; }
+        .about { background: #eeefe7; }
+        .about-grid { display: block; max-width: 980px; }
+        .about-photo { display: none; }
+        .about-intro { display: grid; grid-template-columns: 1.1fr .9fr; gap: 64px; align-items: center; }
+        .about-kicker, .about-topics-title { color: var(--sage-dark); font-size: 12px; font-weight: 600; letter-spacing: 1.8px; text-transform: uppercase; }
+        .about-text p { color: var(--muted); font-size: 18px; line-height: 1.85; }
+        .about-text .about-kicker { margin-bottom: 18px; }
+        .about-signature { margin-top: 28px; color: var(--ink) !important; font-family: 'Playfair Display', serif; font-size: 24px !important; }
+        .about-signature span { display: block; color: var(--sage-dark); font: 500 11px 'Inter', sans-serif; letter-spacing: 1.8px; text-transform: uppercase; margin-top: 3px; }
+        .about-note { position: relative; overflow: hidden; min-height: 245px; padding: 42px 38px 34px; border-radius: 22px; background: var(--sage-dark); color: #fbfaf6; display: flex; flex-direction: column; justify-content: center; }
+        .about-note::after { content: ''; position: absolute; width: 210px; height: 210px; right: -72px; top: -100px; border: 1px solid rgba(255,255,255,.22); border-radius: 50%; box-shadow: 0 0 0 22px rgba(255,255,255,.05), 0 0 0 46px rgba(255,255,255,.04); }
+        .about-note-mark { position: absolute; left: 34px; top: 3px; color: rgba(255,255,255,.28); font: 112px/.9 'Playfair Display', serif; }
+        .about-note p { position: relative; z-index: 1; max-width: 330px; margin: 30px 0 24px; font: 500 28px/1.35 'Playfair Display', serif; }
+        .about-note a { position: relative; z-index: 1; color: #f5ead5; font-size: 13px; text-underline-offset: 4px; }
+        .about-topics { margin-top: 62px; padding-top: 25px; border-top: 1px solid rgba(82,108,86,.2); }
+        .about-topic-list { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin-top: 18px; }
+        .about-topic-list li { padding: 10px 15px; border: 1px solid rgba(82,108,86,.24); border-radius: 999px; color: var(--ink); background: rgba(250,249,245,.55); font-size: 14px; }
+        .how, .services { background: #fbfaf6; }
+        .timeline { gap: 16px; }
+        .timeline-step { background: #f3f3ec; border: 1px solid var(--line); border-radius: 18px; padding: 30px 22px; }
+        .timeline::before { top: 62px; opacity: .6; }
+        .service-card { background: #f3f3ec; border: 1px solid var(--line); border-radius: 18px; padding: 38px 30px; text-align: left; }
+        .service-card::before { display: none; }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 16px 36px rgba(48,61,56,.08); }
+        .service-icon { margin-left: 0; border-radius: 50%; background: #e5eade; color: var(--sage-dark); }
+        .service-card .price, .package-card .package-price { color: var(--sage-dark); }
+        .packages { background: #eeefe7; }
+        .package-card { border: 1px solid var(--line); border-radius: 18px; }
+        .package-card.featured { border-color: var(--sage); }
+        .package-card.featured::before { background: var(--sage-dark); }
+        .form-section { background: linear-gradient(rgba(238,239,231,.82), rgba(238,239,231,.82)), url('form-bg.jpg') center/cover no-repeat; }
+        .form-container { border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 22px 60px rgba(48,61,56,.1); }
+        .contacts { background: var(--paper); }
+        footer { background: #303d38; }
+        .progress-bar { background: var(--sage-dark); }
+        .mobile-phone { background: var(--sage-dark); box-shadow: none; }
+        .reveal { transform: translateY(22px); transition-duration: .65s; }
+        @media (max-width: 1024px) {
+            .hero { height: auto; min-height: 650px; }
+            .hero-layout { gap: 36px; }
+            .hero h1 { font-size: clamp(48px, 6vw, 62px); }
+        }
+        @media (max-width: 768px) {
+            .hero { min-height: auto; padding: 118px 20px 56px; }
+            .hero-layout { grid-template-columns: 1fr; gap: 38px; }
+            .hero-copy { max-width: none; }
+            .hero h1 { font-size: clamp(44px, 12vw, 58px); line-height: 1.06; margin-bottom: 20px; }
+            .hero p { font-size: 17px; margin-bottom: 24px; }
+            .hero-eyebrow { margin-bottom: 18px; }
+            .hero-visual { max-width: 390px; justify-self: center; }
+            .hero-visual img { aspect-ratio: 1 / 1; border-radius: 45% 45% 20px 20px; }
+            .hero-caption { left: -8px; bottom: 20px; max-width: 205px; padding: 14px 16px; font-size: 16px; }
+            section { padding: 68px 0; }
+            section h2 { margin-bottom: 32px; }
+            .timeline-step { padding: 24px 20px; }
+            .service-card { padding: 30px 24px; }
+            .about-intro { grid-template-columns: 1fr; gap: 28px; }
+            .about-text p { font-size: 16px; }
+            .about-note { min-height: 210px; padding: 32px 26px; }
+            .about-note p { font-size: 24px; }
+            .about-topics { margin-top: 38px; }
+            .about-topic-list { gap: 8px; }
+            .about-topic-list li { padding: 9px 12px; font-size: 13px; }
+        }
     </style>
 </head>
 <body>
@@ -945,7 +1078,7 @@
                 </div>
             </a>
 
-            <a href="tel:+79991234567" class="mobile-phone" aria-label="Позвонить">
+            <a href="#form" class="mobile-phone" aria-label="Записаться на консультацию">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                 </svg>
@@ -961,7 +1094,6 @@
                 <li><a href="#about">Обо мне</a></li>
                 <li><a href="#how">Как я работаю</a></li>
                 <li><a href="#services">Услуги</a></li>
-                <li><a href="#reviews">Отзывы</a></li>
                 <li><a href="#contacts">Контакты</a></li>
                 <li><a href="#form" class="btn-nav">Записаться</a></li>
             </ul>
@@ -988,7 +1120,6 @@
             <a href="#about">Обо мне</a>
             <a href="#how">Как я работаю</a>
             <a href="#services">Услуги</a>
-            <a href="#reviews">Отзывы</a>
             <a href="#contacts">Контакты</a>
         </nav>
         <div class="mobile-menu-footer">
@@ -999,28 +1130,16 @@
     <div class="menu-overlay" id="menuOverlay"></div>
 
     <section class="hero">
-        <div class="container">
-            <h1>Психолог Золотова Елизавета</h1>
-            <p>Помогаю справиться с тревогой, стрессом и сложными жизненными ситуациями. Работаю бережно и с уважением к вашему темпу.</p>
-            <a href="#form" class="btn">Записаться на консультацию</a>
-        </div>
-    </section>
-
-    <section class="counters reveal">
-        <div class="container">
-            <div class="counters-grid">
-                <div class="counter-item">
-                    <div class="counter-number" data-target="3">0</div>
-                    <div class="counter-label">года опыта</div>
-                </div>
-                <div class="counter-item">
-                    <div class="counter-number" data-target="200">0</div>
-                    <div class="counter-label">довольных клиентов</div>
-                </div>
-                <div class="counter-item">
-                    <div class="counter-number" data-target="1000">0</div>
-                    <div class="counter-label">часов консультаций</div>
-                </div>
+        <div class="hero-layout">
+            <div class="hero-copy">
+                <p class="hero-eyebrow">Психологические консультации</p>
+                <h1>Можно начать с того, что <em>волнует сейчас.</em></h1>
+                <p>Психолог Золотова Елизавета. Бережно разбираемся с тревогой, стрессом, отношениями и тем, что важно именно вам.</p>
+                <a href="#form" class="btn">Записаться на консультацию</a>
+            </div>
+            <div class="hero-visual">
+                <img src="form-bg.jpg" alt="Руки бережно передают бумажное сердце">
+                <div class="hero-caption">Тихое место для честного разговора</div>
             </div>
         </div>
     </section>
@@ -1029,12 +1148,30 @@
         <div class="container">
             <h2>Обо мне</h2>
             <div class="about-grid">
-                <div class="about-photo">
-                    <img src="form-bg.jpg" alt="Золотова Елизавета">
+                <div class="about-intro">
+                    <div class="about-text">
+                        <p class="about-kicker">Золотова Елизавета · психолог</p>
+                        <p>Я работаю с тревогой, стрессом, отношениями, самооценкой и другими непростыми ситуациями. На встрече можно начать с того, что волнует именно вас, — даже если пока трудно подобрать слова.</p>
+                        <p class="about-signature">Елизавета<span>Буду рада знакомству</span></p>
+                    </div>
+                    <aside class="about-note">
+                        <span class="about-note-mark" aria-hidden="true">“</span>
+                        <p>Не обязательно сразу знать, с чего начать.</p>
+                        <a href="#form">Можно начать с заявки →</a>
+                    </aside>
                 </div>
-                <div class="about-text">
-                    <p>Я — практикующий психолог с опытом работы более 3 лет. Специализируюсь на работе с тревожными состояниями, отношениями и самооценкой. В своей работе использую методы когнитивно-поведенческой терапии и бережный подход к каждому клиенту.</p>
-                    <p>Моя задача — помочь вам найти внутреннюю опору и справиться с трудностями в безопасной и поддерживающей атмосфере.</p>
+                <div class="about-topics">
+                    <p class="about-topics-title">С чем можно обратиться</p>
+                    <ul class="about-topic-list" aria-label="Темы консультаций">
+                        <li>Тревога</li>
+                        <li>Стресс</li>
+                        <li>Отношения</li>
+                        <li>Самооценка</li>
+                        <li>Выгорание</li>
+                        <li>Личные границы</li>
+                        <li>Кризисные ситуации</li>
+                        <li>Поиск себя</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -1047,7 +1184,7 @@
                 <div class="timeline-step">
                     <div class="timeline-icon">📝</div>
                     <h3>Заявка</h3>
-                    <p>Вы оставляете заявку через форму или Telegram</p>
+                    <p>Вы оставляете заявку через форму на сайте</p>
                 </div>
                 <div class="timeline-step">
                     <div class="timeline-icon">💬</div>
@@ -1193,35 +1330,7 @@
         </div>
     </section>
 
-    <section class="reviews reveal" id="reviews">
-        <div class="container">
-            <h2>Отзывы</h2>
-            <div class="reviews-slider" id="reviewsSlider">
-                <div class="reviews-track" id="reviewsTrack">
-                    <div class="review-card">
-                        <div class="review-stars">★★★★★</div>
-                        <div class="review-text">«Елизавета помогла мне справиться с постоянной тревогой. Я наконец-то научилась расслабляться и не накручивать себя.»</div>
-                        <div class="review-author">— Анна К.</div>
-                    </div>
-                    <div class="review-card">
-                        <div class="review-stars">★★★★★</div>
-                        <div class="review-text">«Обратился с проблемами в отношениях. За несколько месяцев работы увидел ситуацию совершенно по-другому. Стало легче.»</div>
-                        <div class="review-author">— Дмитрий М.</div>
-                    </div>
-                    <div class="review-card">
-                        <div class="review-stars">★★★★★</div>
-                        <div class="review-text">«Долго не решалась пойти к психологу. Елизавета создала очень безопасную атмосферу с первой встречи.»</div>
-                        <div class="review-author">— Мария С.</div>
-                    </div>
-                </div>
-                <div class="reviews-nav">
-                    <button class="review-dot active" data-index="0"></button>
-                    <button class="review-dot" data-index="1"></button>
-                    <button class="review-dot" data-index="2"></button>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Отзывы добавим сюда, когда появятся реальные отзывы и согласие на публикацию. -->
 
     <section class="form-section reveal" id="form">
         <div class="container">
@@ -1272,9 +1381,8 @@
     <section class="contacts reveal" id="contacts">
         <div class="container">
             <h2>Контакты</h2>
-            <p>📞 <a href="tel:+79991234567">+7 (999) 123-45-67</a></p>
-            <p>✉️ <a href="mailto:psy@example.com">psy@example.com</a></p>
-            <p>💬 Telegram: <a href="https://t.me/username">@username</a></p>
+            <p>Чтобы обсудить консультацию, оставьте заявку через форму.</p>
+            <a href="#form" class="btn">Оставить заявку</a>
         </div>
     </section>
 
@@ -1346,33 +1454,6 @@
         }, { threshold: 0.15 });
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-        // СЧЁТЧИКИ
-        const counters = document.querySelectorAll('.counter-number');
-        let countersStarted = false;
-        const countersObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !countersStarted) {
-                    countersStarted = true;
-                    counters.forEach(counter => {
-                        const target = +counter.dataset.target;
-                        const step = target / (2000 / 16);
-                        let current = 0;
-                        const update = () => {
-                            current += step;
-                            if (current < target) {
-                                counter.textContent = Math.floor(current);
-                                requestAnimationFrame(update);
-                            } else {
-                                counter.textContent = target + (target >= 100 ? '+' : '');
-                            }
-                        };
-                        update();
-                    });
-                }
-            });
-        }, { threshold: 0.3 });
-        if (counters.length) countersObserver.observe(counters[0].parentElement.parentElement);
-
         // FAQ
         document.querySelectorAll('.faq-question').forEach(q => {
             q.addEventListener('click', () => {
@@ -1382,63 +1463,6 @@
                 if (!wasActive) item.classList.add('active');
             });
         });
-
-        // ОТЗЫВЫ
-        const reviewsSlider = document.getElementById('reviewsSlider');
-        const reviewsTrack = document.getElementById('reviewsTrack');
-        const reviewDots = document.querySelectorAll('.review-dot');
-        const totalReviews = reviewDots.length;
-        let currentReview = 0, startX = 0, currentX = 0, isDragging = false;
-
-        function goToReview(index) {
-            if (index < 0) index = totalReviews - 1;
-            if (index >= totalReviews) index = 0;
-            currentReview = index;
-            reviewsTrack.style.transform = `translateX(-${index * 100}%)`;
-            reviewDots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-        }
-
-        reviewDots.forEach(dot => {
-            dot.addEventListener('click', () => { goToReview(+dot.dataset.index); resetAutoPlay(); });
-        });
-
-        reviewsSlider.addEventListener('mousedown', (e) => {
-            isDragging = true; startX = currentX = e.pageX;
-            reviewsTrack.style.transition = 'none';
-        });
-        reviewsSlider.addEventListener('touchstart', (e) => {
-            isDragging = true; startX = currentX = e.touches[0].clientX;
-            reviewsTrack.style.transition = 'none';
-        }, { passive: true });
-
-        function onMove(clientX) {
-            if (!isDragging) return;
-            currentX = clientX;
-            const diff = currentX - startX;
-            const percentMove = (diff / reviewsSlider.offsetWidth) * 100;
-            reviewsTrack.style.transform = `translateX(${-currentReview * 100 + percentMove}%)`;
-        }
-        document.addEventListener('mousemove', (e) => { if (isDragging) onMove(e.pageX); });
-        reviewsSlider.addEventListener('touchmove', (e) => onMove(e.touches[0].clientX), { passive: true });
-
-        function onEnd() {
-            if (!isDragging) return;
-            isDragging = false;
-            reviewsTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-            const diff = currentX - startX;
-            if (diff < -50) goToReview(currentReview + 1);
-            else if (diff > 50) goToReview(currentReview - 1);
-            else goToReview(currentReview);
-            resetAutoPlay();
-        }
-        document.addEventListener('mouseup', onEnd);
-        reviewsSlider.addEventListener('touchend', onEnd);
-
-        let autoPlayTimer = setInterval(() => goToReview(currentReview + 1), 6000);
-        function resetAutoPlay() {
-            clearInterval(autoPlayTimer);
-            autoPlayTimer = setInterval(() => goToReview(currentReview + 1), 6000);
-        }
 
         // УВЕДОМЛЕНИЯ
         function showToast(message, type) {
