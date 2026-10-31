@@ -18,7 +18,7 @@
   request.dispatchEvent(new Event('input',{bubbles:true}));
   let note=document.querySelector('#request-note');
   if(!note){note=document.createElement('p');note.id='request-note';note.className='request-note';note.setAttribute('role','status');document.querySelector('#zayavka').prepend(note)}
-  note.textContent='Первая фраза добавлена в поле «Что вас беспокоит?». Её можно изменить или удалить перед отправкой.';
+  note.textContent='Первая фраза добавлена в поле «Вопрос о записи». Её можно изменить или удалить перед отправкой.';
   document.querySelector('#form').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'});
   request.focus({preventScroll:true});
  });

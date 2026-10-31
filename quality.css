@@ -1,0 +1,13 @@
+/* A clear booking path, without changing specialist facts or session prices. */
+.package-intro{max-width:610px;font-size:16px;line-height:1.8;color:#566154;margin-bottom:25px}
+.package-details{border-top:1px solid #aab4a4;border-bottom:1px solid #aab4a4}
+.package-details summary{padding:23px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:18px;font-weight:500;cursor:pointer;list-style:none}
+.package-details summary::-webkit-details-marker{display:none}
+.package-details summary>span{font-size:27px;font-weight:400;transition:transform .2s}.package-details[open] summary>span{transform:rotate(45deg)}
+.package-details .packages-grid{padding:10px 0 30px}.package-details:not([open]) .packages-grid{display:none}
+.optional-field{font-size:12px;color:#66715f;margin-left:8px;font-weight:400}
+button.faq-question{width:100%;border:0;background:none;text-align:left;font-family:inherit;color:inherit;cursor:pointer;box-sizing:border-box}
+.faq-answer{font-size:15px;line-height:1.8}.faq-question:focus-visible,summary:focus-visible{outline:2px solid #576c56;outline-offset:4px}
+.phrase-options button{min-height:60px}.btn{min-height:48px}.privacy-note{font-size:13px!important;line-height:1.8}
+@media(max-width:700px){.package-intro{font-size:14px}.package-details summary{font-size:16px;padding:20px 0}.faq-answer{font-size:14px}.optional-field{display:block;margin:3px 0 0}}
+@media(prefers-reduced-motion:reduce){.package-details summary>span{transition:none}}
